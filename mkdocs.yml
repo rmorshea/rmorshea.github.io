@@ -1,0 +1,36 @@
+site_name: Ryan Morshead
+
+site_dir: site
+docs_dir: docs
+
+theme:
+  name: "material"
+  font:
+    text: 'Exo'
+    code: 'Fira Mono'
+  palette:
+    primary: 'white'
+    accent: 'indigo'
+  logo:
+    icon: 'home'
+
+nav:
+    - Home: index.md
+    - Projects: projects.md
+    - Resume: resume.md
+
+plugins:
+    - pdf-export
+    - search
+
+markdown_extensions:
+  - codehilite
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/rmorshea'
+    - type: 'twitter'
+      link: 'https://twitter.com/rmorshea'
+    - type: 'linkedin'
+      link: 'https://linkedin.com/in/rmorshea'

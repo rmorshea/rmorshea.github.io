@@ -1,0 +1,25 @@
+The thing that stood out about Ryan was his interview project.
+
+At Primer, we used to have applicants submit a small web application that would parse geo
+data and support an API for nearest neighbor and full text searches.
+
+Normally I give a week for the project, but Ryan was scheduled such that he only had two
+days and he had relatively little experience with web development.
+
+Not only did he deliver a working API with notes, but he also demonstrated it deployed
+in a Docker container (which he had never used before) and gave a quick architectural
+diagram and some notes about scaled deployments based on what he had read. All while
+being completely humble and open to feedback about how it could be better.
+
+When we hired him, he continued to demonstrate that same dogged determination to do good
+work in an entirely unfamiliar domain (Primer produces on-prem AI software for analysis
+of human text), finding and fixing issues related to distributed computing code that
+had been written by ML engineers and data issues related to corrupted newsfeed data,
+all while making solid contributions to the web application itself. Needless to say,
+I could not find a single person who was not shocked and disappointed by his departure.
+
+His knowledge of the inner workings of Python are easily some of the best I’ve seen,
+topped only by a former Google engineer with a comp sci PhD, and he is also one of the
+most genuine and cooperative people I have had the pleasure of working with.
+
+If I had the headcount and the role for him, I’d easily rehire him again.
