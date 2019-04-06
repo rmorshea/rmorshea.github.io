@@ -1,5 +1,11 @@
 # Resume
 
+[<i class="fa fa-envelope"/> Email](mailto:ryan.morshead@gmail.com) |
+[<i class="fa fa-github"/> GitHub](https://github.com/rmorshea) |
+[<i class="fa fa-linkedin-square"/> LinkedIn](https://linkedin.com/in/rmorshea) |
+[<i class="fa fa-twitter"/> Twitter](https://twitter.com/)
+
+
 Ryan Morshead is a software engineer with experience across the stack as a learner and a
 leader in open source and enterprise. Having worked on projects from their inception into
 the long decline he believes the written and verbal communication of one's work form the
@@ -71,18 +77,20 @@ foundation of its sustainability.
 </table>
 
 
+<p style="page-break-before: always" ></p>
+
+
 ## Work Experience
 
-### Senior Software Engineer | [Cisco Smart Licensing](https://www.cisco.com/c/en/us/products/software/smart-accounts/software-licensing.html)
+### Sr. Software Engineer | [Cisco](https://www.cisco.com/c/en/us/products/software/smart-accounts/software-licensing.html)
 
 **Jul 2018 - Present** - Brought onto Cisco's Engineering Licensing team as the first hire
 on a new project intended to serve Cisco's licensing needs for its present and future
 cloud products.
 
-- Delivered software used by Cisco's new
-  [DNA Center](https://www.cisco.com/c/en/us/products/cloud-systems-management/dna-center/index.html)
-  and future products for years to come.
-- Developed a Python flavor Cisco's Smart Licensing software from the ground up.
+- Delivered to 3 product teams including Cisco's new
+  [DNA Center](https://www.cisco.com/c/en/us/products/cloud-systems-management/dna-center/index.html).
+- Re-engineered Cisco's Smart Licensing for Python and the cloud.
 - Designed goals and deadlines for long term projects.
 - Screened, interviewed, recommended, and trained new hires.
 
@@ -109,10 +117,39 @@ automation framework for a map editor used in the production pipeline for Apple 
 - Communicated with core devs to ensure products meet expectations.
 
 
+### Software Engineer | [Matplotlib](https://github.com/matplotlib/matplotlib)
+
+**Jan 2017 - Jul 2017** - Refactored large portions of the codebase to use a new library
+called [Traitlets](#traitlets-ipython-and-jupyter) for facilitating the development
+of interactive Matplotlib plots for [Jupyter](https://jupyter.org).
+
+- Worked to refactor legacy code used by thousand of people.
+- Created new API features for Traitlets that are now broadly within Jupyter.
+- Became immersed in open source communities, workflows, and release cycles.
+
+
+<p style="page-break-before: always" ></p>
+
+
+## Supplemental Work
+
+
+### GSOC Mentor | [Matplotlib](https://github.com/matplotlib/matplotlib)
+
+**Jun 2017 - Sep 2017** Guided a student through
+[Google's Summer of Code](https://summerofcode.withgoogle.com/)
+as their sole mentor in order to continue the work of
+[integrating Traitlets into Matplotlib](#software-engineer-matplotlib).
+
+- Reviewed the student's code
+- Introduced them to Git and GitHub as tools for collaboration
+- Organized and enforced regular meetings to display daily progress.
+
+
 ## Owned Projects
 
 
-### [<i class="fa fa-github"></i> iDOM](https://github.com/rmorshea/idom) - Python for the Web
+### [<i class="fa fa-github"/> iDOM](https://github.com/rmorshea/idom) - Python for the Web
 
 Gives Python developers the power to create interactive web applications without
 writing a single line of Javascript. iDOM was originally inspired by
@@ -122,7 +159,7 @@ and
 however it breaks from both by allowing live updates to substantially sized frontend views.
 
 
-### [<i class="fa fa-github"></i> Spectate](https://github.com/rmorshea/spectate) - MVC for Python
+### [<i class="fa fa-github"/> Spectate](https://github.com/rmorshea/spectate) - MVC for Python
 
 A library for Python 2 and 3 that can track changes to mutable data types. With spectate
 complicated protocols for managing updates don't need to be the outward responsibility
@@ -133,7 +170,7 @@ the state between a server and client can controlled by spectate so user's don't
 ## Maintained Projects
 
 
-### [<i class="fa fa-github"></i> Traitlets](https://github.com/rmorshea/traitlets) - IPython & Jupyter
+### [<i class="fa fa-github"/> Traitlets](https://github.com/rmorshea/traitlets) - IPython and Jupyter
 
 Traitlets is a pure Python library for enforcing strong typing, observing changes to
 tracked data, and reading configuring values from files or from command line arguments.
