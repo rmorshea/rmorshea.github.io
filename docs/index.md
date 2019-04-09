@@ -16,7 +16,7 @@ and for
 <figure class="image" style="margin: 0px">
   <img src="images/backpacking_yosemite_2017.jpg"/>
   <figcaption>
-    <a href="https://www.instagram.com/bigmackpackin/?hl=en">
+    <a target="_blank" href="https://www.instagram.com/bigmackpackin/?hl=en">
       <i class="fa fa-instagram"></i>
       photo credit
     </a>

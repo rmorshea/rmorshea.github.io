@@ -1,4 +1,4 @@
-# Resume
+# Ryan Morshead
 
 [<i class="fa fa-envelope"/> Email](mailto:ryan.morshead@gmail.com) |
 [<i class="fa fa-github"/> GitHub](https://github.com/rmorshea) |
@@ -6,9 +6,9 @@
 [<i class="fa fa-twitter"/> Twitter](https://twitter.com/)
 
 
-Ryan Morshead is a software engineer with experience across the stack as a learner and a
-leader in open source and enterprise. Having worked on projects from their inception into
-the long decline he believes the written and verbal communication of one's work form the
+A software engineer with experience across the stack as a learner and a leader in open
+source and enterprise. Having worked on projects from their inception to their long
+decline he believes the written and verbal communication of one's work form the
 foundation of its sustainability.
 
 
@@ -17,9 +17,9 @@ foundation of its sustainability.
 <table style="width:100%">
   <tr>
     <th/>
+    <th>Expert</th>
     <th>Advanced</th>
-    <th>Intermediate</th>
-    <th>Novice</th>
+    <th>Competent</th>
   </tr>
   <tr>
     <th>Languages</th>
@@ -179,6 +179,19 @@ Traitlets powers the configuration system of [IPython](https://ipython.org/) and
 [IPython's interactive widgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html).
 
 
+## Recommendations
+
+> His knowledge of the inner workings of Python are easily some of the best I’ve seen...
+  he is also one of the most genuine and cooperative people I have had the pleasure of
+  working with.
+
+<a href="https://www.linkedin.com/in/adyates/">
+  <i class="fa fa-linkedin-square"/>
+  Alvin Yates
+</a>
+- Former Manager
+
+
 ## Education
 
 <a href="https://calpoly.edu">
@@ -194,16 +207,3 @@ Traitlets powers the configuration system of [IPython](https://ipython.org/) and
       </span>
   </div>
 </a>
-
-
-## Recommondations
-
-> His knowledge of the inner workings of Python are easily some of the best I’ve seen...
-  he is also one of the most genuine and cooperative people I have had the pleasure of
-  working with.
-
-<a href="https://www.linkedin.com/in/adyates/">
-  <i class="fa fa-linkedin-square"/>
-  Alvin Yates
-</a>
-- Former Manager

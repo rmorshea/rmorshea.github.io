@@ -1,0 +1,11 @@
+repos:
+  - repo: local
+    hooks:
+      - id: mkdocs-build
+        name: MkDocs Build
+        language: system
+        exclude: .*
+        always_run: true
+        entry: bash
+        args:
+          - 'scripts/build-and-add.sh'
