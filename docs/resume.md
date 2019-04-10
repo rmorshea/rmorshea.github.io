@@ -1,5 +1,6 @@
 # Ryan Morshead
 
+[<i class="fa fa-globe" aria-hidden="true"/> Website](https://rmorshea.github.io) |
 [<i class="fa fa-envelope"/> Email](mailto:ryan.morshead@gmail.com) |
 [<i class="fa fa-github"/> GitHub](https://github.com/rmorshea) |
 [<i class="fa fa-linkedin-square"/> LinkedIn](https://linkedin.com/in/rmorshea) |
