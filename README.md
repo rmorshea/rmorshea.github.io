@@ -7,7 +7,6 @@ A personal static webpage built using [mkdocs](https://www.mkdocs.org/).
 
 ```bash
 pip install -r requirements.txt
-pre-commit install
 ```
 
 
@@ -21,5 +20,5 @@ mkdocs serve
 # Deploy
 
 ```bash
-git subtree push --prefix site origin master
+mkdocs gh-deploy
 ```
