@@ -4,6 +4,8 @@ site_dir: site
 docs_dir: docs
 
 theme:
+  icon:
+    logo: material/account-circle
   name: "material"
   font:
     text: 'Exo'

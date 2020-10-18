@@ -5,7 +5,6 @@
 [:fontawesome-brands-linkedin: LinkedIn](https://linkedin.com/in/rmorshea) |
 [:fontawesome-brands-twitter: Twitter](https://twitter.com/)
 
-
 A software engineer with experience across the stack as a learner and a leader in open
 source and enterprise. Having worked on projects from their inception to their long
 decline he believes the written and verbal communication of one's work forms the
@@ -97,7 +96,7 @@ tooling to improve workflows and pipelines for researchers and data scientists a
 
 - Principle team member developing a library for defining features at 23andMe
 - Delivered the library and several core model features ahead of schedule
-- Created documentation and testing infrastructure that's loved by users, and makes devs more effective
+- Made comprehensize docs and tests that are loved by users, and devs alike
 
 ### Software Engineer | [Cisco](https://www.cisco.com/c/en/us/products/software/smart-accounts/software-licensing.html) | Jul 2018 - Jul 2019
 
@@ -116,7 +115,6 @@ intended to serve Cisco's licensing needs for its present and future cloud produ
 Part of a growing team of engineers tasked with supporting data scientists developing
 machine learning solutions to text based problems.
 
-- Resident Pythonista.
 - Added backend REST API features and expanded test coverage.
 - Built and deployed simple micro service using Python and Flask.
 - Learned React on the job to aide in developing frontend components.
