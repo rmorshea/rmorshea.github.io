@@ -1,9 +1,9 @@
 # Ryan Morshead
 
-[<i class="fa fa-envelope"/> Email](mailto:ryan.morshead@gmail.com) |
-[<i class="fa fa-github"/> GitHub](https://github.com/rmorshea) |
-[<i class="fa fa-linkedin-square"/> LinkedIn](https://linkedin.com/in/rmorshea) |
-[<i class="fa fa-twitter"/> Twitter](https://twitter.com/)
+[:fontawesome-solid-envelope: Email](mailto:ryan.morshead@gmail.com) |
+[:fontawesome-brands-github: GitHub](https://github.com/rmorshea) |
+[:fontawesome-brands-linkedin: LinkedIn](https://linkedin.com/in/rmorshea) |
+[:fontawesome-brands-twitter: Twitter](https://twitter.com/)
 
 If only there was more time to explain how little time I seem to have... I write
 [music](projects#music),

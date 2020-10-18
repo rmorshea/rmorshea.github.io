@@ -9,7 +9,7 @@
 ## Software
 
 
-### [<i class="fa fa-github"></i> iDOM](https://github.com/rmorshea/idom) - Python for the Web
+### [<i class="fa fontawesome-brands-github"></i> iDOM](https://github.com/rmorshea/idom) - Python for the Web
 
 Gives Python developers the power to create interactive web applications without
 writing a single line of Javascript. iDOM was originally inspired by
@@ -19,7 +19,7 @@ and
 however it breaks from both by allowing live updates to substantially sized frontend views.
 
 
-### [<i class="fa fa-github"></i> Spectate](https://github.com/rmorshea/spectate) - MVC for Python
+### [<i class="fa fontawesome-brands-github"></i> Spectate](https://github.com/rmorshea/spectate) - MVC for Python
 
 A library for Python 2 and 3 that can track changes to mutable data types. With spectate
 complicated protocols for managing updates don't need to be the outward responsibility
