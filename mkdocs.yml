@@ -30,6 +30,9 @@ nav:
 - Home: index.md
 - Projects: projects.md
 - Resume: resume.md
+- Articles:
+  - 2021:
+    - "IDOM - React but it's in Python": articles/2021/idom-react-but-its-python.md
 
 extra:
   social:
