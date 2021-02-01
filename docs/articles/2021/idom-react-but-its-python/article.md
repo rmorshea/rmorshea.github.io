@@ -22,7 +22,7 @@ function Slideshow() {
   const [index, setIndex] = useState(0);
   return (
     <img
-      src={ `https://picsum.photos/800/300?image=${index}` }
+      src={ `https://picsum.photos/400?image=${index}` }
       onClick={ () => setIndex(index + 1) }
       style={ {cursor: "pointer"} }
     />
@@ -38,7 +38,7 @@ def Slideshow():
     index, set_index = idom.hooks.use_state(0)
     return idom.html.img(
         {
-            "src": f"https://picsum.photos/800/300?image={index}",
+            "src": f"https://picsum.photos/400?image={index}",
             "onClick": lambda event: set_index(index + 1),
             "style": {"cursor": "pointer"},
         }
@@ -107,11 +107,16 @@ import idom
 
 @idom.component
 def Counter():
-    """A functional component for a button that tracks its click count"""
     count, set_count = idom.hooks.use_state(initial_value=0)
     return idom.html.div(
-      idom.html.button({"onClick": lambda event: set_count(lambda old_count: old_count + 1)}),
-      idom.html.p(f"Clicked {count} times"),
+        idom.html.button(
+            {
+                "onClick": lambda event: set_count(
+                    lambda old_count: old_count + 1
+                )
+            }
+        ),
+        idom.html.p(f"Clicked {count} times"),
     )
 ```
 
