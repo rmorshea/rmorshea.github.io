@@ -22,11 +22,15 @@ nav:
   - 2021:
     - "IDOM - React but it's in Python": articles/2021/idom-react-but-its-python/article.md
 
+extra_css:
+  - style/extra.css
+
 plugins:
 - pdf-export
 - search
 
 markdown_extensions:
+- attr_list
 - pymdownx.highlight
 - pymdownx.superfences
 - pymdownx.emoji:
