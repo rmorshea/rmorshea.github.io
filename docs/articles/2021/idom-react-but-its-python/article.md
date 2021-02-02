@@ -12,10 +12,10 @@ more evident than the version of React's often lauded
 
 At a glance, the similarities between IDOM and React are rather striking. Below is a
 React component which defines a simple `Slideshow` displaying an image that updates when
-a user clicks on it, and immediately below it is the same view implemented in Python
+a user clicks on it. Immediately following that is the same view implemented in Python
 using IDOM:
 
-```JSX
+```jsx
 import React, { useState } from react;
 
 function Slideshow() {
