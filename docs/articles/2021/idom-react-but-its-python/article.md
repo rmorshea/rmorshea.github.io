@@ -52,12 +52,12 @@ idom.run(Slideshow)
 Over the [past 5 years](https://www.npmtrends.com/react-vs-angular-vs-vue) front-end
 developers seem to have arrived at the conclusion that declarative programming is
 usually better than imperative. Put more simply, mutable state in programs can quickly
-lead to unsustainable complexity. This trend is largely evidenced by
+lead to unsustainable complexity. This trend is largely evidenced by the
 [rise](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190) of Javascript
 frameworks like [Vue](https://vuejs.org/) and [React](https://reactjs.org/) which
 describe the logic of computations without explicitly stating their control flow.
 
-![npm download trends](https://gist.githubusercontent.com/rmorshea/24d369fac53c2e1a07557850a0e7ff13/raw/ac4f80fe824d8159b87545ff3632d7da9cf351ce/npm-download-trends.png)
+![npm download trends](npm-download-trends.png)
 
 So what does this have to do with Python and IDOM? Well, because browsers are the de
 facto "operating system of the internet", even back-end languages like Python have had
@@ -80,18 +80,18 @@ A variety of Python packages have since been created to help solve this problem:
 However they each have drawbacks that can make them difficult to use.
 
 1. **Imperative paradigm** - projects like IPyWidgets and Bokeh have not embraced the
-   same declarative design principle pioneered by front-end developers.
+   same declarative design principles pioneered by front-end developers.
 
-2. **Limited capabilities** - At their initial inception, the development of these
-   libraries was driven by the visualization needs of data scientists, so creating even
-   moderately complex UI layouts can be challenging.
+2. **Limited layouts** - At their initial inception, the developers of these libraries
+   were driven by the visualization needs of data scientists, so the ability to create
+   complex UI layouts was never an engineering goal.
 
 3. **Restrictive ecosystems** - UI components developed for one framework cannot be
    easily ported to any of the others because their APIs are either too complex,
    undocumented, or are structurally inaccesible.
 
 A future article will address specific comparisons to each of the projects mentioned
-above, but for now we'll just focus on IDOM and its solutions to the problems above.
+above, but for now we'll just focus on how IDOM and its solutions to the problems above.
 
 ## Declarative Components
 
@@ -159,12 +159,12 @@ It's important to note that neither declarative nor imperative design principle 
 inherently better in all circumstances. However, it is often the case that asserting the
 way a view should look is easier than describing how it should come to look that way.
 
-## Complex Layouts
+## Flexible Layouts
 
-Constructing intricate layouts is also made easier when done declaratively because the
+Constructing complex layouts is also made easier when done declaratively because the
 elements, state, and logic that comprise them are not entangled. As in the `OnOff`
 component shown above, code responsible for managing business logic and manipulating
-state can be clearly detached from the code responsible for structure the elements of
+state can be clearly detached from the code responsible for structuring the elements of
 the layout. The great advantage of this approach is that these sections of code can be
 easily factored out into separate functions if either the logic or the structure becomes
 too complex:
@@ -172,7 +172,7 @@ too complex:
 ```python
 @idom.component
 def OnOff():
-  return on_off_buttons(*use_on_off_state())
+    return on_off_buttons(*use_on_off_state())
 
 def use_on_off_state():
     """manage logic and state"""
