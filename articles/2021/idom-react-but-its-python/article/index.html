@@ -520,9 +520,12 @@ now visible <code>"On"</code> button, a client-side event is triggered, the asso
 responds to it by setting the <code>state</code> to <code>True</code>, and a re-render of the component is
 scheduled. The internal machinery again goes to work to update the display, this time
 though, the text will read <code>"The button is on"</code> because of the <code>state</code> change.</p>
-<p>This behavior of defining outcomes without stating the means by which to achieve them is
-what makes components in IDOM and React "declarative". For comparison, a hypothetical,
-and a more imperative approach to defining the same interface might look similar to the
+<p>Nowhere in the example above does the code describe how to evolve the frontend view when
+events occur. Instead, it declares that, given a particular state, this is how it should
+look. It's then IDOM's responsibility to figure out how to make that happen. This
+behavior of defining outcomes without stating the means by which to achieve them is what
+makes components in IDOM and React "declarative". For comparison, a hypothetical, and a
+more imperative approach to defining the same interface might look similar to the
 following:</p>
 <div class="highlight"><pre><span></span><code><span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">()</span>
 
