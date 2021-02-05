@@ -434,8 +434,8 @@ degree of interactivity than this alone can achieve.</p>
 <ul>
 <li><a href="https://github.com/jupyter-widgets/ipywidgets">IPyWidgets</a> - Adds interactive widgets
   to <a href="https://jupyter.org/">Jupyter Notebooks</a></li>
-<li><a href="https://plotly.com/dash/">Plotly Dash</a> - Allows data scientists to produces
-  enterprise-ready analytic apps</li>
+<li><a href="https://plotly.com/dash/">Dash</a> - Allows data scientists to produces enterprise-ready
+  analytic apps</li>
 <li><a href="https://www.streamlit.io/">Streamlit</a> - Turns simple Python scripts into interactive
   dashboards</li>
 <li><a href="https://docs.bokeh.org/">Bokeh</a> - An interactive visualization library for modern web
@@ -450,7 +450,8 @@ degree of interactivity than this alone can achieve.</p>
 </li>
 <li>
 <p><strong>Imperative paradigm</strong> - IPyWidgets and Bokeh have not embraced the same declarative
-   design principles pioneered by front-end developers.</p>
+   design principles pioneered by front-end developers. Streamlit and Dash on the
+   otherhand, are decarative, but fall short of the features provided by React or Vue.</p>
 </li>
 <li>
 <p><strong>Limited layouts</strong> - At their initial inception, the developers of these libraries
@@ -549,7 +550,7 @@ following:</p>
 
 <p>In this imperative incarnation, we must explicitely state how the <code>count_button</code> updates
 <code>count_text</code> via its <code>on_click</code> callback. We should also note that <code>state</code> is mutated by
-ammending its <code>'count'</code>, a side effect which can be avoided with hooks.</p>
+ammending its <code>'count'</code> - a side effect which can be avoided with hooks.</p>
 <p>It's important to note that neither declarative nor imperative design principle are
 inherently better in all circumstances. However, it is often the case that asserting the
 way a view should look is easier than describing how it should come to look that way.</p>
