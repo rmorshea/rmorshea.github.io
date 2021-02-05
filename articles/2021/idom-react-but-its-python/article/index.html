@@ -1,0 +1,709 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>IDOM - It's React, but in Python - Ryan Morshead</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>body,input{font-family:"Exo",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../style/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="indigo">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#idom-its-react-but-in-python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../../.." title="Ryan Morshead" class="md-header-nav__button md-logo" aria-label="Ryan Morshead">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.232 7.232 0 01-6 3.2M12 5a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3m0-3A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10c0-5.53-4.5-10-10-10z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Ryan Morshead
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              IDOM - It's React, but in Python
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Ryan Morshead" class="md-nav__button md-logo" aria-label="Ryan Morshead">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.232 7.232 0 01-6 3.2M12 5a3 3 0 013 3 3 3 0 01-3 3 3 3 0 01-3-3 3 3 0 013-3m0-3A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10c0-5.53-4.5-10-10-10z"/></svg>
+
+    </a>
+    Ryan Morshead
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../projects/" class="md-nav__link">
+      Projects
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../resume/" class="md-nav__link">
+      Resume
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Articles
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Articles" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Articles
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        IDOM - It's React, but in Python
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      IDOM - It's React, but in Python
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-we-need-idom" class="md-nav__link">
+    Why Do We Need IDOM?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecosystem-independence" class="md-nav__link">
+    Ecosystem Independence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declarative-components" class="md-nav__link">
+    Declarative Components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flexible-layouts" class="md-nav__link">
+    Flexible Layouts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-we-need-idom" class="md-nav__link">
+    Why Do We Need IDOM?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecosystem-independence" class="md-nav__link">
+    Ecosystem Independence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declarative-components" class="md-nav__link">
+    Declarative Components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flexible-layouts" class="md-nav__link">
+    Flexible Layouts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="article.pdf" title="PDF Export"><svg style="height: 1.2rem; width: 1.2rem;" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg></a>
+              
+                
+                
+                <h1 id="idom-its-react-but-in-python">IDOM - It's React, but in Python</h1>
+<p><a href="https://github.com/idom-team/idom">IDOM</a> is a new declarative Python package for
+building highly interactive and composable user interfaces.</p>
+<p><img alt="idom logo" src="https://github.com/idom-team/idom/raw/929d07ff4a643320a6148336613621242284f8d2/docs/source/branding/idom-logo.png" /></p>
+<p>IDOM takes inspiration from <a href="https://reactjs.org/">React</a>, and wherever possible,
+attempts to achieve parity with the features it copies more directly. Nowhere is this
+more evident than the version of React's often lauded
+<a href="https://reactjs.org/docs/hooks-intro.html">"Hooks"</a> that IDOM implements in Python.</p>
+<p>At a glance, the similarities between IDOM and React are rather striking. Below is a
+React component which defines a simple <code>Slideshow</code> displaying an image that updates when
+a user clicks on it. Immediately following that is the same view implemented in Python
+using IDOM:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="nx">from</span> <span class="nx">react</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">Slideshow</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="p">[</span><span class="nx">index</span><span class="p">,</span> <span class="nx">setIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">img</span>
+      <span class="na">src</span><span class="o">=</span><span class="p">{</span> <span class="sb">`https://picsum.photos/400?image=</span><span class="si">${</span><span class="nx">index</span><span class="si">}</span><span class="sb">`</span> <span class="p">}</span>
+      <span class="na">onClick</span><span class="o">=</span><span class="p">{</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">setIndex</span><span class="p">(</span><span class="nx">index</span> <span class="o">+</span> <span class="mf">1</span><span class="p">)</span> <span class="p">}</span>
+      <span class="na">style</span><span class="o">=</span><span class="p">{</span> <span class="p">{</span><span class="nx">cursor</span><span class="o">:</span> <span class="s2">&quot;pointer&quot;</span><span class="p">}</span> <span class="p">}</span>
+    <span class="p">/&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">idom</span>
+
+<span class="nd">@idom</span><span class="o">.</span><span class="n">component</span>
+<span class="k">def</span> <span class="nf">Slideshow</span><span class="p">():</span>
+    <span class="n">index</span><span class="p">,</span> <span class="n">set_index</span> <span class="o">=</span> <span class="n">idom</span><span class="o">.</span><span class="n">hooks</span><span class="o">.</span><span class="n">use_state</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">idom</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">img</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;src&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;https://picsum.photos/400?image=</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;onClick&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">set_index</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;cursor&quot;</span><span class="p">:</span> <span class="s2">&quot;pointer&quot;</span><span class="p">},</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">idom</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Slideshow</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="why-do-we-need-idom">Why Do We Need IDOM?</h2>
+<p>Over the <a href="https://www.npmtrends.com/react-vs-angular-vs-vue">past 5 years</a> front-end
+developers seem to have arrived at the conclusion that declarative programming is
+usually better than imperative. Put more simply, mutable state in programs can quickly
+lead to unsustainable complexity. This trend is largely evidenced by the
+<a href="https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190">rise</a> of Javascript
+frameworks like <a href="https://vuejs.org/">Vue</a> and <a href="https://reactjs.org/">React</a> which
+describe the logic of computations without explicitly stating their control flow.</p>
+<p><img alt="npm download trends" src="../npm-download-trends.png" /></p>
+<p>So what does this have to do with Python and IDOM? Well, because browsers are the de
+facto "operating system of the internet", even back-end languages like Python have had
+to figure out clever ways to integrate with them. While standard
+<a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> APIs are well
+suited to applications built using HTML templates, modern browser users expect a higher
+degree of interactivity than this alone can achieve.</p>
+<p>A variety of Python packages have since been created to help solve this problem:</p>
+<ul>
+<li><a href="https://github.com/jupyter-widgets/ipywidgets">IPyWidgets</a> - Adds interactive widgets
+  to <a href="https://jupyter.org/">Jupyter Notebooks</a></li>
+<li><a href="https://plotly.com/dash/">Plotly Dash</a> - Allows data scientists to produces
+  enterprise-ready analytic apps</li>
+<li><a href="https://www.streamlit.io/">Streamlit</a> - Turns simple Python scripts into interactive
+  dashboards</li>
+<li><a href="https://docs.bokeh.org/">Bokeh</a> - An interactive visualization library for modern web
+  browsers</li>
+</ul>
+<p>However they each have drawbacks that can make them difficult to use.</p>
+<ol>
+<li>
+<p><strong>Restrictive ecosystems</strong> - UI components developed for one framework cannot be
+   easily ported to any of the others because their APIs are either too complex,
+   undocumented, or are structurally inaccesible.</p>
+</li>
+<li>
+<p><strong>Imperative paradigm</strong> - projects like IPyWidgets and Bokeh have not embraced the
+   same declarative design principles pioneered by front-end developers.</p>
+</li>
+<li>
+<p><strong>Limited layouts</strong> - At their initial inception, the developers of these libraries
+   were driven by the visualization needs of data scientists so the ability to create
+   complex UI layouts may not have been a primary engineering goal.</p>
+</li>
+</ol>
+<p>A future article will address specific comparisons to each of the projects mentioned
+above, but for now we'll just focus on how IDOM and its solutions to the problems above.</p>
+<!--
+## Only Where You Need It
+
+You can target your usage of IDOM in your production-grade applications with IDOM's Javascript [client library](https://www.npmjs.com/package/idom-client-react). Just install the client in your front-end app and connect it to a back-end websocket that's serving up IDOM models - instead of creating your whole application with IDOM, you can use it exactly where you need it. Further, the ability to leverage [custom javascript](#custom-javascript) in IDOM means that you can progressively develop React components for your particular use cases. In a fully matured application, IDOM can act primarilly as a simple, yet performant, data synchronization layer. -->
+
+<h2 id="ecosystem-independence">Ecosystem Independence</h2>
+<p>IDOM has a flexible set of core abstractions that allow it to easily interface with its
+peers. At the time of writing both Jupyter and Dash are already supported while
+Streamlit, Bokeh, and <a href="https://iooxa.dev">Iooxa</a> (another scientific collaboration tool),
+are in the works:</p>
+<ul>
+<li><a href="https://github.com/idom-team/idom-jupyter">idom-jupyter</a> (try it now with
+  <a href="https://mybinder.org/v2/gh/idom-team/idom-jupyter/main?filepath=notebooks%2Fintroduction.ipynb">Binder</a>)</li>
+<li><a href="https://github.com/idom-team/idom-dash">idom-dash</a></li>
+</ul>
+<p>By providing well defined interfaces and straighforward protocols, IDOM makes it easy to
+swap out any part of the stack with an alternate implementation if you need to. For
+example, if you need to use a different web server for your application, IDOM already
+has 3 options to choose from or use as blueprints to create your own.</p>
+<ul>
+<li><a href="https://github.com/sanic-org/sanic">Sanic</a></li>
+<li><a href="https://github.com/pallets/flask">Flask</a></li>
+<li><a href="https://github.com/tornadoweb/tornado">Tornado</a></li>
+</ul>
+<p>You can even target your usage of IDOM in your production-grade applications with IDOM's
+Javascript <a href="https://github.com/idom-team/idom-client-react">React client library</a>. Just
+install it in your front-end app and connect a back-end websocket that's serving up IDOM
+models. Instead of creating your whole application with IDOM, you can use it exactly
+where you need it. Further, the ability to leverage custom or existing
+<a href="https://idom-docs.herokuapp.com/docs/javascript-components.html">javascript components</a>
+in IDOM means that you can progressively develop React components for your particular
+use cases.</p>
+<p>IDOM's own documentation acts as a prime example for this targeted usage - most of the
+page is static HTML, but embedded in it are interactive examples that feature live views
+being served from a web socket:</p>
+<p><img alt="live-examples-in-docs" class="shadow" src="../live-examples-in-docs.gif" /></p>
+<h2 id="declarative-components">Declarative Components</h2>
+<p>IDOM, by adopting the hook design pattern from React, inherits many of its aesthetic and
+functional characteristics. For those unfamiliar with hooks, user interfaces are
+composed of basic <a href="https://en.wikipedia.org/wiki/HTML_element">HTML elements</a> which are
+constructed and returned by special functions called "components". Then, through the
+magic of hooks, those functions can be made to have state. Consider the component below
+which returns two buttons and some text that reacts when either is pressed:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">idom</span>
+
+<span class="nd">@idom</span><span class="o">.</span><span class="n">component</span>
+<span class="k">def</span> <span class="nf">OnOff</span><span class="p">():</span>
+    <span class="n">state</span><span class="p">,</span> <span class="n">set_state</span> <span class="o">=</span> <span class="n">idom</span><span class="o">.</span><span class="n">hooks</span><span class="o">.</span><span class="n">use_state</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">idom</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">div</span><span class="p">(</span>
+        <span class="n">idom</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">button</span><span class="p">({</span><span class="s2">&quot;onClick&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">set_state</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span> <span class="s2">&quot;On&quot;</span><span class="p">),</span>
+        <span class="n">idom</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">button</span><span class="p">({</span><span class="s2">&quot;onClick&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">set_state</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="s2">&quot;Off&quot;</span><span class="p">),</span>
+        <span class="n">idom</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="s2">&quot;The button is &quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;on&quot;</span> <span class="k">if</span> <span class="n">state</span> <span class="k">else</span> <span class="s2">&quot;off&quot;</span><span class="p">)),</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="on-off-buttons" class="shadow" src="../on-off.gif" /></p>
+<p>The first time a view of the component above is rendered, the <code>OnOff</code> function is called
+where the initial <code>state</code> is <code>False</code>. The function then returns a series of to return a
+series of HTML elements with callbacks. Machinery behind the scenes then realizes that
+declaration and thusly displays two buttons with the text <code>"The button is off"</code>. When a
+user clicks the now visible <code>"On"</code> button, its callback is triggered, the <code>state</code> is set
+to <code>True</code>, the <code>OnOff</code> function is called, and the machinery again goes to work. This
+time though, the text displayed will read <code>"The button is on"</code>.</p>
+<p>This behavior of defining outcomes without stating the means by which to achieve them is
+what makes components in IDOM and React "declarative". For comparison, a hypothetical,
+and a more imperative approach to defining the same interface might look similar to the
+following:</p>
+<div class="highlight"><pre><span></span><code><span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">on_off</span><span class="p">():</span>
+    <span class="n">state_text</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;The button is off&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_on</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="n">state_text</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;The button is on&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_off</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="n">state_text</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;The button is off&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">div</span><span class="p">(</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">on_click</span><span class="o">=</span><span class="n">set_on</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="s2">&quot;On&quot;</span><span class="p">),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">on_click</span><span class="o">=</span><span class="n">set_off</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="s2">&quot;Off&quot;</span><span class="p">),</span>
+        <span class="n">state_text</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="n">layout</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">on_off</span><span class="p">())</span>
+</code></pre></div>
+
+<p>In this imperative incarnation, we must explicitely state how the <code>count_button</code> updates
+<code>count_text</code> via its <code>on_click</code> callback. We should also note that <code>state</code> is mutated by
+ammending its <code>'count'</code>, a side effect which can be avoided with hooks.</p>
+<p>It's important to note that neither declarative nor imperative design principle are
+inherently better in all circumstances. However, it is often the case that asserting the
+way a view should look is easier than describing how it should come to look that way.</p>
+<h2 id="flexible-layouts">Flexible Layouts</h2>
+<p>Constructing complex layouts is also made easier when done declaratively because the
+elements, state, and logic that comprise them are not entangled. As in the <code>OnOff</code>
+component shown above, code responsible for managing business logic and manipulating
+state can be clearly detached from the code responsible for structuring the elements of
+the layout. The great advantage of this approach is that these sections of code can be
+easily factored out into separate functions if either the logic or the structure becomes
+too complex:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@idom</span><span class="o">.</span><span class="n">component</span>
+<span class="k">def</span> <span class="nf">OnOff</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">on_off_buttons</span><span class="p">(</span><span class="o">*</span><span class="n">use_on_off_state</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">use_on_off_state</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;manage logic and state&quot;&quot;&quot;</span>
+    <span class="n">state</span><span class="p">,</span> <span class="n">set_state</span> <span class="o">=</span> <span class="n">idom</span><span class="o">.</span><span class="n">hooks</span><span class="o">.</span><span class="n">use_state</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_on</span><span class="p">():</span>
+        <span class="n">set_state</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_off</span><span class="p">()</span>
+        <span class="n">set_state</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">state</span><span class="p">,</span> <span class="n">set_on</span><span class="p">,</span> <span class="n">set_off</span>
+
+<span class="k">def</span> <span class="nf">on_off_buttons</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">set_on</span><span class="p">,</span> <span class="n">set_off</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;define element structure&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">idom</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">div</span><span class="p">(</span>
+        <span class="n">idom</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">button</span><span class="p">({</span><span class="s2">&quot;onClick&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">set_on</span><span class="p">(),</span> <span class="s2">&quot;On&quot;</span><span class="p">),</span>
+        <span class="n">idom</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">button</span><span class="p">({</span><span class="s2">&quot;onClick&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">set_off</span><span class="p">(),</span> <span class="s2">&quot;Off&quot;</span><span class="p">),</span>
+        <span class="n">idom</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="s2">&quot;The button is &quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;on&quot;</span> <span class="k">if</span> <span class="n">state</span> <span class="k">else</span> <span class="s2">&quot;off&quot;</span><span class="p">)),</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<p>While the refactoring above is overkill in such a simple case, attempting something
+similar with the ealier imperative example wouldn't be as straighforward because
+callbacks responsible for defining business logic must hold a reference to the elements
+they intend to update. The effect is that the description of the layout in code is often
+muddled by semantic limitations of the business logic that make it difficult to maintain
+as the code develops and grows old.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Building highly interactive web applications as a Python developer has historically been
+a great challenge. However IDOM changes that. Knowing just basic HTML, CSS, and Python,
+you can make everything from
+<a href="https://idom-docs.herokuapp.com/docs/examples.html#slideshow">slideshows</a> to
+<a href="https://idom-docs.herokuapp.com/docs/examples.html#simple-dashboard">dashboards</a> and
+use it wherever you need it, whether that's in a
+<a href="https://github.com/idom-team/idom-jupyter">Jupyter Notebook</a>
+or an existing web application.</p>
+<p>To learn more check it out:</p>
+<ul>
+<li><a href="https://idom-docs.herokuapp.com/docs/installation.html">installation instructions</a></li>
+<li><a href="https://idom-docs.herokuapp.com/docs/getting-started.html">where to get started</a></li>
+<li><a href="https://idom-docs.herokuapp.com/docs/examples.html">interactive examples</a></li>
+<li><a href="https://idom-docs.herokuapp.com/docs/index.html">and much more</a>!</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../../../resume/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Resume
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/rmorshea" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/rmorshea" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://linkedin.com/in/rmorshea" target="_blank" rel="noopener" title="linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
