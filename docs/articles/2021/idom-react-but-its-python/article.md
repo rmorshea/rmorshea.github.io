@@ -161,9 +161,12 @@ responds to it by setting the `state` to `True`, and a re-render of the componen
 scheduled. The internal machinery again goes to work to update the display, this time
 though, the text will read `"The button is on"` because of the `state` change.
 
-This behavior of defining outcomes without stating the means by which to achieve them is
-what makes components in IDOM and React "declarative". For comparison, a hypothetical,
-and a more imperative approach to defining the same interface might look similar to the
+Nowhere in the example above does the code describe how to evolve the frontend view when
+events occur. Instead, it declares that, given a particular state, this is how it should
+look. It's then IDOM's responsibility to figure out how to make that happen. This
+behavior of defining outcomes without stating the means by which to achieve them is what
+makes components in IDOM and React "declarative". For comparison, a hypothetical, and a
+more imperative approach to defining the same interface might look similar to the
 following:
 
 ```python
