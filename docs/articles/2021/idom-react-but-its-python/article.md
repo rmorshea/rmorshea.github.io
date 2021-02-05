@@ -70,28 +70,68 @@ A variety of Python packages have since been created to help solve this problem:
 
 - [IPyWidgets](https://github.com/jupyter-widgets/ipywidgets) - Adds interactive widgets
   to [Jupyter Notebooks](https://jupyter.org/)
-- [Streamlit](https://www.streamlit.io/) - Turns simple Python scripts into interactive
-  dashboards
 - [Plotly Dash](https://plotly.com/dash/) - Allows data scientists to produces
   enterprise-ready analytic apps
+- [Streamlit](https://www.streamlit.io/) - Turns simple Python scripts into interactive
+  dashboards
 - [Bokeh](https://docs.bokeh.org/) - An interactive visualization library for modern web
   browsers
 
 However they each have drawbacks that can make them difficult to use.
 
-1. **Imperative paradigm** - projects like IPyWidgets and Bokeh have not embraced the
-   same declarative design principles pioneered by front-end developers.
-
-2. **Limited layouts** - At their initial inception, the developers of these libraries
-   were driven by the visualization needs of data scientists, so the ability to create
-   complex UI layouts was never an engineering goal.
-
 3. **Restrictive ecosystems** - UI components developed for one framework cannot be
    easily ported to any of the others because their APIs are either too complex,
    undocumented, or are structurally inaccesible.
 
+1. **Imperative paradigm** - projects like IPyWidgets and Bokeh have not embraced the
+   same declarative design principles pioneered by front-end developers.
+
+1. **Limited layouts** - At their initial inception, the developers of these libraries
+   were driven by the visualization needs of data scientists so the ability to create
+   complex UI layouts may not have been a primary engineering goal.
+
 A future article will address specific comparisons to each of the projects mentioned
 above, but for now we'll just focus on how IDOM and its solutions to the problems above.
+
+<!--
+## Only Where You Need It
+
+You can target your usage of IDOM in your production-grade applications with IDOM's Javascript [client library](https://www.npmjs.com/package/idom-client-react). Just install the client in your front-end app and connect it to a back-end websocket that's serving up IDOM models - instead of creating your whole application with IDOM, you can use it exactly where you need it. Further, the ability to leverage [custom javascript](#custom-javascript) in IDOM means that you can progressively develop React components for your particular use cases. In a fully matured application, IDOM can act primarilly as a simple, yet performant, data synchronization layer. -->
+
+## Ecosystem Independence
+
+IDOM has a flexible set of core abstractions that allow it to easily interface with its
+peers. At the time of writing both Jupyter and Dash are already supported while
+Streamlit, Bokeh, and [Iooxa](https://iooxa.dev) (another scientific collaboration tool),
+are in the works:
+
+- [idom-jupyter](https://github.com/idom-team/idom-jupyter) (try it now with
+  [Binder](https://mybinder.org/v2/gh/idom-team/idom-jupyter/main?filepath=notebooks%2Fintroduction.ipynb))
+- [idom-dash](https://github.com/idom-team/idom-dash)
+
+By providing well defined interfaces and straighforward protocols, IDOM makes it easy to
+swap out any part of the stack with an alternate implementation if you need to. For
+example, if you need to use a different web server for your application, IDOM already
+has 3 options to choose from or use as blueprints to create your own.
+
+- [Sanic](https://github.com/sanic-org/sanic)
+- [Flask](https://github.com/pallets/flask)
+- [Tornado](https://github.com/tornadoweb/tornado)
+
+You can even target your usage of IDOM in your production-grade applications with IDOM's
+Javascript [React client library](https://github.com/idom-team/idom-client-react). Just
+install it in your front-end app and connect a back-end websocket that's serving up IDOM
+models. Instead of creating your whole application with IDOM, you can use it exactly
+where you need it. Further, the ability to leverage custom or existing
+[javascript components](https://idom-docs.herokuapp.com/docs/javascript-components.html)
+in IDOM means that you can progressively develop React components for your particular
+use cases.
+
+IDOM's own documentation acts as a prime example for this targeted usage - most of the
+page is static HTML, but embedded in it are interactive examples that feature live views
+being served from a web socket:
+
+![live-examples-in-docs](live-examples-in-docs.gif){: .shadow}
 
 ## Declarative Components
 
@@ -198,20 +238,24 @@ def on_off_buttons(state, set_on, set_off):
 While the refactoring above is overkill in such a simple case, attempting something
 similar with the ealier imperative example wouldn't be as straighforward because
 callbacks responsible for defining business logic must hold a reference to the elements
-they intend to update. The effect is that the description of the layout is often muddled
-by semantic limitations, and the business logic is distracted by the details of the
-view's implementation details.
-
-## Ecosystem Independence
+they intend to update. The effect is that the description of the layout in code is often
+muddled by semantic limitations of the business logic that make it difficult to maintain
+as the code develops and grows old.
 
 ## Conclusion
 
 Building highly interactive web applications as a Python developer has historically been
-a great challenge. However, IDOM changes that. Knowing just basic HTML, CSS, and Python,
+a great challenge. However IDOM changes that. Knowing just basic HTML, CSS, and Python,
 you can make everything from
 [slideshows](https://idom-docs.herokuapp.com/docs/examples.html#slideshow) to
-[interactive
-dashboards](https://idom-docs.herokuapp.com/docs/examples.html#simple-dashboard). Its
-usage can be as broad or targeted as you need it to be, and
-you can use it wherever you need it, whether that's in a [Jupyter
-notebook](https://github.com/idom-team/idom-jupyter) or standard web application.
+[dashboards](https://idom-docs.herokuapp.com/docs/examples.html#simple-dashboard) and
+use it wherever you need it, whether that's in a
+[Jupyter Notebook](https://github.com/idom-team/idom-jupyter)
+or an existing web application.
+
+To learn more check it out:
+
+- [installation instructions](https://idom-docs.herokuapp.com/docs/installation.html)
+- [where to get started](https://idom-docs.herokuapp.com/docs/getting-started.html)
+- [interactive examples](https://idom-docs.herokuapp.com/docs/examples.html)
+- [and much more](https://idom-docs.herokuapp.com/docs/index.html)!
