@@ -83,8 +83,8 @@ However they each have drawbacks that can make them difficult to use.
    easily ported to any of the others because their APIs are either too complex,
    undocumented, or are structurally inaccesible.
 
-1. **Imperative paradigm** - projects like IPyWidgets and Bokeh have not embraced the
-   same declarative design principles pioneered by front-end developers.
+1. **Imperative paradigm** - IPyWidgets and Bokeh have not embraced the same declarative
+   design principles pioneered by front-end developers.
 
 1. **Limited layouts** - At their initial inception, the developers of these libraries
    were driven by the visualization needs of data scientists so the ability to create
