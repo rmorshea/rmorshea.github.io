@@ -70,8 +70,8 @@ A variety of Python packages have since been created to help solve this problem:
 
 - [IPyWidgets](https://github.com/jupyter-widgets/ipywidgets) - Adds interactive widgets
   to [Jupyter Notebooks](https://jupyter.org/)
-- [Plotly Dash](https://plotly.com/dash/) - Allows data scientists to produces
-  enterprise-ready analytic apps
+- [Dash](https://plotly.com/dash/) - Allows data scientists to produces enterprise-ready
+  analytic apps
 - [Streamlit](https://www.streamlit.io/) - Turns simple Python scripts into interactive
   dashboards
 - [Bokeh](https://docs.bokeh.org/) - An interactive visualization library for modern web
@@ -84,7 +84,8 @@ However they each have drawbacks that can make them difficult to use.
    undocumented, or are structurally inaccesible.
 
 1. **Imperative paradigm** - IPyWidgets and Bokeh have not embraced the same declarative
-   design principles pioneered by front-end developers.
+   design principles pioneered by front-end developers. Streamlit and Dash on the
+   otherhand, are decarative, but fall short of the features provided by React or Vue.
 
 1. **Limited layouts** - At their initial inception, the developers of these libraries
    were driven by the visualization needs of data scientists so the ability to create
@@ -192,7 +193,7 @@ layout.add_element(on_off())
 
 In this imperative incarnation, we must explicitely state how the `count_button` updates
 `count_text` via its `on_click` callback. We should also note that `state` is mutated by
-ammending its `'count'`, a side effect which can be avoided with hooks.
+ammending its `'count'` - a side effect which can be avoided with hooks.
 
 It's important to note that neither declarative nor imperative design principle are
 inherently better in all circumstances. However, it is often the case that asserting the
