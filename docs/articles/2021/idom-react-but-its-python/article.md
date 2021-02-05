@@ -167,32 +167,40 @@ component shown above, code responsible for managing business logic and manipula
 state can be clearly detached from the code responsible for structure the elements of
 the layout. The great advantage of this approach is that these sections of code can be
 easily factored out into separate functions if either the logic or the structure becomes
-too complex.
+too complex:
 
 ```python
-# manage logic and state --------------------------
-state, set_state = idom.hooks.use_state(False)
+@idom.component
+def OnOff():
+  return on_off_buttons(*use_on_off_state())
 
-def set_on(event):
-    set_state(True)
+def use_on_off_state():
+    """manage logic and state"""
+    state, set_state = idom.hooks.use_state(False)
 
-def set_off(event)
-    set_state(False)
+    def set_on():
+        set_state(True)
 
-# define element structure ------------------------
-return html.div(
-    html.button(on_click=set_on, children="On"),
-    html.button(on_click=set_off, children="Off"),
-    idom.html.p("The button is " + ("on" if state else "off")),
-)
+    def set_off()
+        set_state(False)
+
+    return state, set_on, set_off
+
+def on_off_buttons(state, set_on, set_off):
+    """define element structure"""
+    return idom.html.div(
+        idom.html.button({"onClick": lambda event: set_on(), "On"),
+        idom.html.button({"onClick": lambda event: set_off(), "Off"),
+        idom.html.p("The button is " + ("on" if state else "off")),
+    )
 ```
 
-In an imperative implementation, callbacks responsible for defining business logic must
-hold a reference to the elements they intend to update. The effect is that the
-description of the layout is often muddled by semantic limitations, and the logic is
-distracted by the details of the view. More importantly though, the inherent linkages
-between these parts of the program makes them more difficult to factor out as they grown
-more complex with further development.
+While the refactoring above is overkill in such a simple case, attempting something
+similar with the ealier imperative example wouldn't be as straighforward because
+callbacks responsible for defining business logic must hold a reference to the elements
+they intend to update. The effect is that the description of the layout is often muddled
+by semantic limitations, and the business logic is distracted by the details of the
+view's implementation details.
 
 ## Ecosystem Independence
 
