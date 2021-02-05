@@ -459,7 +459,7 @@ degree of interactivity than this alone can achieve.</p>
 </li>
 </ol>
 <p>A future article will address specific comparisons to each of the projects mentioned
-above, but for now we'll just focus on how IDOM and its solutions to the problems above.</p>
+above, but for now, we'll just focus on IDOM and its solutions to the problems above.</p>
 <!--
 ## Only Where You Need It
 
@@ -467,9 +467,8 @@ You can target your usage of IDOM in your production-grade applications with IDO
 
 <h2 id="ecosystem-independence">Ecosystem Independence</h2>
 <p>IDOM has a flexible set of core abstractions that allow it to easily interface with its
-peers. At the time of writing both Jupyter and Dash are already supported while
-Streamlit, Bokeh, and <a href="https://iooxa.dev">Iooxa</a> (another scientific collaboration tool),
-are in the works:</p>
+peers. At the time of writing both Jupyter and Dash are already supported (Streamlit and
+Bokeh are in the works):</p>
 <ul>
 <li><a href="https://github.com/idom-team/idom-jupyter">idom-jupyter</a> (try it now with
   <a href="https://mybinder.org/v2/gh/idom-team/idom-jupyter/main?filepath=notebooks%2Fintroduction.ipynb">Binder</a>)</li>
@@ -487,22 +486,18 @@ has 3 options to choose from or use as blueprints to create your own.</p>
 <p>You can even target your usage of IDOM in your production-grade applications with IDOM's
 Javascript <a href="https://github.com/idom-team/idom-client-react">React client library</a>. Just
 install it in your front-end app and connect a back-end websocket that's serving up IDOM
-models. Instead of creating your whole application with IDOM, you can use it exactly
-where you need it. Further, the ability to leverage custom or existing
-<a href="https://idom-docs.herokuapp.com/docs/javascript-components.html">javascript components</a>
-in IDOM means that you can progressively develop React components for your particular
-use cases.</p>
-<p>IDOM's own documentation acts as a prime example for this targeted usage - most of the
-page is static HTML, but embedded in it are interactive examples that feature live views
-being served from a web socket:</p>
+models. IDOM's own <a href="https://idom-docs.herokuapp.com/docs/index.html">documentation</a> acts
+as a prime example for this targeted usage - most of the page is static HTML, but
+embedded in it are interactive examples that feature live views being served from a web
+socket:</p>
 <p><img alt="live-examples-in-docs" class="shadow" src="../live-examples-in-docs.gif" /></p>
 <h2 id="declarative-components">Declarative Components</h2>
 <p>IDOM, by adopting the hook design pattern from React, inherits many of its aesthetic and
 functional characteristics. For those unfamiliar with hooks, user interfaces are
-composed of basic <a href="https://en.wikipedia.org/wiki/HTML_element">HTML elements</a> which are
+composed of basic <a href="https://en.wikipedia.org/wiki/HTML_element">HTML elements</a> that are
 constructed and returned by special functions called "components". Then, through the
-magic of hooks, those functions can be made to have state. Consider the component below
-which returns two buttons and some text that reacts when either is pressed:</p>
+magic of hooks, those components can be made to have state. Consider the component below
+which returns two buttons that, when pressed, update and some text:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">idom</span>
 
 <span class="nd">@idom</span><span class="o">.</span><span class="n">component</span>
@@ -516,13 +511,15 @@ which returns two buttons and some text that reacts when either is pressed:</p>
 </code></pre></div>
 
 <p><img alt="on-off-buttons" class="shadow" src="../on-off.gif" /></p>
-<p>The first time a view of the component above is rendered, the <code>OnOff</code> function is called
-where the initial <code>state</code> is <code>False</code>. The function then returns a series of to return a
-series of HTML elements with callbacks. Machinery behind the scenes then realizes that
-declaration and thusly displays two buttons with the text <code>"The button is off"</code>. When a
-user clicks the now visible <code>"On"</code> button, its callback is triggered, the <code>state</code> is set
-to <code>True</code>, the <code>OnOff</code> function is called, and the machinery again goes to work. This
-time though, the text displayed will read <code>"The button is on"</code>.</p>
+<p>Here's a very high level summary of how it works... the first time a view of the
+component above is rendered, the <code>OnOff</code> function is called where the initial <code>state</code> is
+<code>False</code>. The function then returns a series of HTML elements with callbacks that respond
+to client-side events. Machinery behind the scenes then realizes that declaration and
+displays two buttons with the text <code>"The button is off"</code>. Then, when a user clicks the
+now visible <code>"On"</code> button, a client-side event is triggered, the associated callback
+responds to it by setting the <code>state</code> to <code>True</code>, and a re-render of the component is
+scheduled. The internal machinery again goes to work to update the display, this time
+though, the text will read <code>"The button is on"</code> because of the <code>state</code> change.</p>
 <p>This behavior of defining outcomes without stating the means by which to achieve them is
 what makes components in IDOM and React "declarative". For comparison, a hypothetical,
 and a more imperative approach to defining the same interface might look similar to the
