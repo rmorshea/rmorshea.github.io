@@ -383,8 +383,7 @@ more evident than the version of React's often lauded
 <a href="https://reactjs.org/docs/hooks-intro.html">"Hooks"</a> that IDOM implements in Python.</p>
 <p>At a glance, the similarities between IDOM and React are rather striking. Below is a
 React component which defines a simple <code>Slideshow</code> displaying an image that updates when
-a user clicks on it. Immediately following that is the same view implemented in Python
-using IDOM:</p>
+a user clicks on it:</p>
 <div class="highlight"><pre><span></span><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="nx">from</span> <span class="nx">react</span><span class="p">;</span>
 
 <span class="kd">function</span> <span class="nx">Slideshow</span><span class="p">()</span> <span class="p">{</span>
@@ -399,6 +398,7 @@ using IDOM:</p>
 <span class="p">}</span>
 </code></pre></div>
 
+<p>And this is the same component implemented in Python using IDOM:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">idom</span>
 
 <span class="nd">@idom</span><span class="o">.</span><span class="n">component</span>
@@ -526,26 +526,26 @@ following:</p>
 <div class="highlight"><pre><span></span><code><span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">on_off</span><span class="p">():</span>
-    <span class="n">state_text</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;The button is off&quot;</span><span class="p">)</span>
+    <span class="n">on_off_text</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;The button is off&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">set_on</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-        <span class="n">state_text</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;The button is on&quot;</span><span class="p">)</span>
+        <span class="n">on_off_text</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;The button is on&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">set_off</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-        <span class="n">state_text</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;The button is off&quot;</span><span class="p">)</span>
+        <span class="n">on_off_text</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="s2">&quot;The button is off&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">div</span><span class="p">(</span>
         <span class="n">html</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">on_click</span><span class="o">=</span><span class="n">set_on</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="s2">&quot;On&quot;</span><span class="p">),</span>
         <span class="n">html</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">on_click</span><span class="o">=</span><span class="n">set_off</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="s2">&quot;Off&quot;</span><span class="p">),</span>
-        <span class="n">state_text</span><span class="p">,</span>
+        <span class="n">on_off_text</span><span class="p">,</span>
     <span class="p">)</span>
 
 <span class="n">layout</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">on_off</span><span class="p">())</span>
 </code></pre></div>
 
-<p>In this imperative incarnation, we must explicitely state how the <code>count_button</code> updates
-<code>count_text</code> via its <code>on_click</code> callback. We should also note that <code>state</code> is mutated by
-ammending its <code>'count'</code> - a side effect which can be avoided with hooks.</p>
+<p>In this imperative incarnation, we must explicitely state how the <code>"On"</code> and <code>"Off"</code>
+buttons update <code>on_off_text</code> via its <code>on_click</code> callback. We should also note that state
+is mutated by ammending the <code>children</code> of the <code>on_off_text</code>.</p>
 <p>It's important to note that neither declarative nor imperative design principle are
 inherently better in all circumstances. However, it is often the case that asserting the
 way a view should look is easier than describing how it should come to look that way.</p>
