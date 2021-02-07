@@ -12,8 +12,7 @@ more evident than the version of React's often lauded
 
 At a glance, the similarities between IDOM and React are rather striking. Below is a
 React component which defines a simple `Slideshow` displaying an image that updates when
-a user clicks on it. Immediately following that is the same view implemented in Python
-using IDOM:
+a user clicks on it:
 
 ```jsx
 import React, { useState } from react;
@@ -29,6 +28,8 @@ function Slideshow() {
   )
 }
 ```
+
+And this is the same component implemented in Python using IDOM:
 
 ```python
 import idom
@@ -169,26 +170,26 @@ following:
 layout = Layout()
 
 def on_off():
-    state_text = html.p(children="The button is off")
+    on_off_text = html.p(children="The button is off")
 
     def set_on(event):
-        state_text.update(children="The button is on")
+        on_off_text.update(children="The button is on")
 
     def set_off(event):
-        state_text.update(children="The button is off")
+        on_off_text.update(children="The button is off")
 
     return html.div(
         html.button(on_click=set_on, children="On"),
         html.button(on_click=set_off, children="Off"),
-        state_text,
+        on_off_text,
     )
 
 layout.add_element(on_off())
 ```
 
-In this imperative incarnation, we must explicitely state how the `count_button` updates
-`count_text` via its `on_click` callback. We should also note that `state` is mutated by
-ammending its `'count'` - a side effect which can be avoided with hooks.
+In this imperative incarnation, we must explicitely state how the `"On"` and `"Off"`
+buttons update `on_off_text` via its `on_click` callback. We should also note that state
+is mutated by ammending the `children` of the `on_off_text`.
 
 It's important to note that neither declarative nor imperative design principle are
 inherently better in all circumstances. However, it is often the case that asserting the
