@@ -98,8 +98,8 @@ above, but for now, we'll just focus on IDOM and its solutions to the problems a
 ## Ecosystem Independence
 
 IDOM has a flexible set of core abstractions that allow it to easily interface with its
-peers. At the time of writing both Jupyter and Dash are already supported (Streamlit and
-Bokeh are in the works):
+peers. At the time of writing, both Jupyter and Dash are supported, while Streamlit and
+Bokeh are in the works:
 
 - [idom-jupyter](https://github.com/idom-team/idom-jupyter) (try it now with
   [Binder](https://mybinder.org/v2/gh/idom-team/idom-jupyter/main?filepath=notebooks%2Fintroduction.ipynb))
@@ -108,7 +108,7 @@ Bokeh are in the works):
 By providing well defined interfaces and straighforward protocols, IDOM makes it easy to
 swap out any part of the stack with an alternate implementation if you need to. For
 example, if you need to use a different web server for your application, IDOM already
-has 3 options to choose from or use as blueprints to create your own.
+has 3 options to choose from or, use as blueprints to create your own:
 
 - [Sanic](https://github.com/sanic-org/sanic)
 - [Flask](https://github.com/pallets/flask)
@@ -131,71 +131,114 @@ functional characteristics. For those unfamiliar with hooks, user interfaces are
 composed of basic [HTML elements](https://en.wikipedia.org/wiki/HTML_element) that are
 constructed and returned by special functions called "components". Then, through the
 magic of hooks, those components can be made to have state. Consider the component below
-which returns two buttons that, when pressed, update and some text:
+which displays a basic representation of an
+[AND-gate](https://en.wikipedia.org/wiki/AND_gate):
 
 ```python
 import idom
 
 @idom.component
-def OnOff():
-    state, set_state = idom.hooks.use_state(False)
+def AndGate():
+    input_1, toggle_1 = use_toggle()
+    input_2, toggle_2 = use_toggle()
     return idom.html.div(
-        idom.html.button({"onClick": lambda event: set_state(True), "On"),
-        idom.html.button({"onClick": lambda event: set_state(False), "Off"),
-        idom.html.p("The button is " + ("on" if state else "off")),
+        idom.html.input(
+            {"type": "checkbox", "onClick": lambda event: toggle_1()}
+        ),
+        idom.html.input(
+            {"type": "checkbox", "onClick": lambda event: toggle_2()}
+        ),
+        idom.html.pre(f"{input_1} AND {input_2} = {input_1 and input_2}"),
     )
+
+def use_toggle():
+    state, set_state = idom.hooks.use_state(False)
+
+    def toggle_state():
+        set_state(lambda old_state: not old_state)
+
+    return state, toggle_state
+
+idom.run(AndGate)
 ```
 
-![on-off-buttons](on-off.gif){: .shadow}
+![and-gate-demo](and-gate.gif){: .shadow}
 
 Here's a very high level summary of how it works... the first time a view of the
-component above is rendered, the `OnOff` function is called where the initial `state` is
-`False`. The function then returns a series of HTML elements with callbacks that respond
-to client-side events. Machinery behind the scenes then realizes that declaration and
-displays two buttons with the text `"The button is off"`. Then, when a user clicks the
-now visible `"On"` button, a client-side event is triggered, the associated callback
-responds to it by setting the `state` to `True`, and a re-render of the component is
-scheduled. The internal machinery again goes to work to update the display, this time
-though, the text will read `"The button is on"` because of the `state` change.
+component above is rendered, the `AndGate` function is called where the initial `state`
+for `input_1` and `input_2` is `False`. The function then returns a series of HTML
+elements with callbacks that respond to client-side events. Machinery behind the scenes
+subsequently realizes that declaration and displays two checkbox buttons with the text
+`False AND False = False`. Later, when a user clicks the now visible checkbox buttons,
+client-side events are triggered, the associated callbacks respond by inverting the old
+state from `False` to `True`, and a re-render of the component is scheduled. When
+re-rendering, the function is again called, this time though, where `input_1` and
+`input_2` have been updated to reflect the new `state`, thus causing the displayed text
+to change.
 
-Nowhere in the example above does the code describe how to evolve the frontend view when
-events occur. Instead, it declares that, given a particular state, this is how it should
-look. It's then IDOM's responsibility to figure out how to make that happen. This
-behavior of defining outcomes without stating the means by which to achieve them is what
-makes components in IDOM and React "declarative". For comparison, a hypothetical, and a
-more imperative approach to defining the same interface might look similar to the
-following:
+Consider the fact that nowhere in the example above does the code describe how to evolve
+the frontend view when events occur. Instead, it declares that, given a particular
+state, this is how the view should look. It's then IDOM's responsibility to figure out
+how to bring that declaration into being. This behavior of defining outcomes without
+stating the means by which to achieve them is what makes components in IDOM and React
+"declarative". For comparison, a hypothetical, and a more imperative approach to
+defining the same interface might look similar to the following:
 
 ```python
 layout = Layout()
 
-def on_off():
-    on_off_text = html.p(children="The button is off")
+def and_gate():
+    state = {"input_1": False, "input_2": False}
+    output_text = html.pre()
+    output_text.update(children=make_and_gate_text(state))
 
-    def set_on(event):
-        on_off_text.update(children="The button is on")
-
-    def set_off(event):
-        on_off_text.update(children="The button is off")
+    def toggle_input(index):
+      state[f"input_{index}"] = not state[f"input_{index}"]
+      output_text.update(children=make_and_gate_text(state))
 
     return html.div(
-        html.button(on_click=set_on, children="On"),
-        html.button(on_click=set_off, children="Off"),
-        on_off_text,
+        html.input(
+            {"type": "checkbox", "onClick": lambda e: toggle_input(1)}
+        ),
+        html.input(
+            {"type": "checkbox", "onClick": lambda e: toggle_input(2)}
+        ),
+        output_text
     )
 
-layout.add_element(on_off())
+def make_and_gate_text(state):
+    return "{input_1} AND {input_2} = {output}".format(
+        input_1=state["input_1"],
+        input_2=state["input_2"],
+        output=state["input_1"] and state["input_2"],
+    )
+
+layout.add_element(and_gate())
+layout.run()
 ```
 
-In this imperative incarnation, we must explicitely state how the `"On"` and `"Off"`
-buttons update `on_off_text` via its `on_click` callback. We should also note that state
-is mutated by ammending the `children` of the `on_off_text`.
+In this imperative incarnation there are several disadvantages:
 
-It's important to note that neither declarative nor imperative design principle are
-inherently better in all circumstances. However, it is often the case that asserting the
-way a view should look is easier than describing how it should come to look that way.
+1. **Program cannot easily be refactored** - Functions in the imperative example are
+   much more specialized to their particular usages in `and_gate`. By comparison,
+   `use_toggle` from the declarative implementation could be applicable to any scenario
+   where boolean indicators should be toggled on and off.
 
-## Flexible Layouts
+2. **The view is not defined in static relations** - This issue is exemplified by the
+   fact that we must call `make_and_gate_text` from two different locations in the
+   program. Once in the body of `and_gate` and again in the body of the callback
+   `toggle_input`. This means that, to understand what the `output_text` might contain,
+   we must also understand all the business logic that surrounds it.
+
+3. **Referential linkages cause complexity** - For the imperative implementation to
+   evolve the view, its various callbacks must hold references to all the elements that
+   they will update. At the outset this makes writing programs difficult since elements
+   must be passed up and down the call stack wherever they are needed. Considered
+   further though, it also means that a function layers down in the call stack can
+   accidentally or intentionally impact the behavior of ostensibly unrelated parts of
+   the program.
+
+<!-- ## Flexible Layouts
 
 Constructing complex layouts is also made easier when done declaratively because the
 elements, state, and logic that comprise them are not entangled. As in the `OnOff`
@@ -236,7 +279,7 @@ similar with the ealier imperative example wouldn't be as straighforward because
 callbacks responsible for defining business logic must hold a reference to the elements
 they intend to update. The effect is that the description of the layout in code is often
 muddled by semantic limitations of the business logic that make it difficult to maintain
-as the code develops and grows old.
+as the code develops and grows old. -->
 
 ## Conclusion
 
