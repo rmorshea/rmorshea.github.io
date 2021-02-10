@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -36,17 +36,17 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="3440"
-     inkscape:window-height="1403"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
      id="namedview4820"
      showgrid="true"
      inkscape:zoom="1.1798897"
      inkscape:cx="188.99304"
      inkscape:cy="244.6615"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g5106"
+     inkscape:current-layer="svg4818"
      showguides="false"
      inkscape:snap-object-midpoints="false"
      inkscape:snap-bbox="true"
@@ -340,7 +340,7 @@
        id="tspan5533"
        x="399.5"
        y="259.5"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666603px;font-family:mono;-inkscape-font-specification:mono">event</tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666603px;font-family:monospace;-inkscape-font-specification:monospace">event</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -351,7 +351,7 @@
        id="tspan5533-0"
        x="49.5"
        y="259.5"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666603px;font-family:mono;-inkscape-font-specification:mono">VDOM diff</tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666603px;font-family:monospace;-inkscape-font-specification:monospace">VDOM diff</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -362,5 +362,5 @@
        id="tspan5533-0-1"
        x="269.5"
        y="149.5"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666603px;font-family:mono;-inkscape-font-specification:mono">VDOM</tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666603px;font-family:monospace;-inkscape-font-specification:monospace">VDOM</tspan></text>
 </svg>
