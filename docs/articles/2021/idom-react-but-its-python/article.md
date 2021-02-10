@@ -162,10 +162,10 @@ def use_toggle():
 idom.run(AndGate)
 ```
 
-![and-gate-demo](and-gate.gif){: .shadow}
+![and-gate-demo](and-gate.gif){: .center .shadow}
 
 Here's a very high level summary of how it works... the first time a view of the
-component above is rendered, the `AndGate` function is called where the initial `state`
+component above is rendered, the `AndGate` function is called where its initial `state`
 for `input_1` and `input_2` is `False`. The function then returns a series of HTML
 elements with callbacks that respond to client-side events. Machinery behind the scenes
 subsequently realizes that declaration and displays two checkbox buttons with the text
@@ -190,27 +190,29 @@ layout = Layout()
 def and_gate():
     state = {"input_1": False, "input_2": False}
     output_text = html.pre()
-    output_text.update(children=make_and_gate_text(state))
+    update_and_gate_output_text(output_text, state)
 
     def toggle_input(index):
       state[f"input_{index}"] = not state[f"input_{index}"]
-      output_text.update(children=make_and_gate_text(state))
+      update_and_gate_output_text(output_text, state)
 
     return html.div(
         html.input(
-            {"type": "checkbox", "onClick": lambda e: toggle_input(1)}
+            {"type": "checkbox", "onClick": lambda event: toggle_input(1)}
         ),
         html.input(
-            {"type": "checkbox", "onClick": lambda e: toggle_input(2)}
+            {"type": "checkbox", "onClick": lambda event: toggle_input(2)}
         ),
         output_text
     )
 
-def make_and_gate_text(state):
-    return "{input_1} AND {input_2} = {output}".format(
-        input_1=state["input_1"],
-        input_2=state["input_2"],
-        output=state["input_1"] and state["input_2"],
+def update_and_gate_output_text(text, state):
+    text.update(
+        children="{input_1} AND {input_2} = {output}".format(
+            input_1=state["input_1"],
+            input_2=state["input_2"],
+            output=state["input_1"] and state["input_2"],
+        )
     )
 
 layout.add_element(and_gate())
@@ -219,67 +221,92 @@ layout.run()
 
 In this imperative incarnation there are several disadvantages:
 
-1. **Program cannot easily be refactored** - Functions in the imperative example are
-   much more specialized to their particular usages in `and_gate`. By comparison,
-   `use_toggle` from the declarative implementation could be applicable to any scenario
-   where boolean indicators should be toggled on and off.
+1. **Refactoring is difficult** - Functions are much more specialized to their
+   particular usages in `and_gate`. By comparison, `use_toggle` from the declarative
+   implementation could be applicable to any scenario where boolean indicators should be
+   toggled on and off.
 
-2. **The view is not defined in static relations** - This issue is exemplified by the
-   fact that we must call `make_and_gate_text` from two different locations in the
-   program. Once in the body of `and_gate` and again in the body of the callback
+2. **No clear static relations** - There is no one section of code in which one can
+   discern the basic structure and behaviors of the view. This issue is exemplified by
+   the fact that we must call `update_and_gate_output_text` from two different
+   locations. Once in the body of `and_gate` and again in the body of the callback
    `toggle_input`. This means that, to understand what the `output_text` might contain,
    we must also understand all the business logic that surrounds it.
 
-3. **Referential linkages cause complexity** - For the imperative implementation to
-   evolve the view, its various callbacks must hold references to all the elements that
-   they will update. At the outset this makes writing programs difficult since elements
-   must be passed up and down the call stack wherever they are needed. Considered
-   further though, it also means that a function layers down in the call stack can
-   accidentally or intentionally impact the behavior of ostensibly unrelated parts of
-   the program.
+3. **Referential links cause complexity** - To evolve the view, various callbacks must
+   hold references to all the elements that they will update. At the outset this makes
+   writing programs difficult since elements must be passed up and down the call stack
+   wherever they are needed. Considered further though, it also means that a function
+   layers down in the call stack can accidentally or intentionally impact the behavior
+   of ostensibly unrelated parts of the program.
 
-<!-- ## Flexible Layouts
+## Virtual Document Object Model
 
-Constructing complex layouts is also made easier when done declaratively because the
-elements, state, and logic that comprise them are not entangled. As in the `OnOff`
-component shown above, code responsible for managing business logic and manipulating
-state can be clearly detached from the code responsible for structuring the elements of
-the layout. The great advantage of this approach is that these sections of code can be
-easily factored out into separate functions if either the logic or the structure becomes
-too complex:
+To communicate between their back-end Python servers and Javascript clients, IDOM's
+peers take an approach that aligns fairly closely with the
+[Model-View-Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+design pattern - the controller lives server-side (though not always), the model is
+what's synchronized between the server and client, and the view is run client-side in
+Javascript. To draw it out might look something like this:
+
+![mvc-flow-diagram](mvc-flow-diagram.svg){: .center}
+
+By contrast, IDOM uses something called a Virtual Document Object Model
+([VDOM](https://idom-docs.herokuapp.com/docs/specifications.html#vdom-mimetype)) to
+construct a representation of the view. The VDOM is constructed on the Python side by
+components then, as it evolves, IDOM's layout computes VDOM-diffs and wires them to its
+Javascript client:
+
+![idom-flow-diagram](idom-flow-diagram.svg){: .center}
+
+This process, in addition to drastically reducing complexity, means that Python
+developers with just a little bit of HTML and CSS knowledge can easily create elabortate
+interfaces because they have complete control over the view. Of course many users
+probably don't care about the details and just want high level components, but for those
+who do it's easy to distribute their creations for others to use.
+
+## Custom Javascript Components
+
+Now, if you're thinking about how VDOM is being used critically, you may have thought...
+
+> Isn't wiring a virtual representation of the view to the client, even if its diffed,
+> expensive?
+
+And yes, while the performance of IDOM is sufficient for most use cases, there are
+inevitably scenarios where this could be an issue. Thankfully though, just like it's
+peers, IDOM makes it possible to seemlesly integrate
+[Javascript components](https://idom-docs.herokuapp.com/docs/javascript-components.html).
+They can be custom built for your use case, or you can just leverage the existing
+Javascript ecosystem without any extra work:
 
 ```python
+import json
+import idom
+
+material_ui = idom.install("@material-ui/core", fallback="loading...")
+
 @idom.component
-def OnOff():
-    return on_off_buttons(*use_on_off_state())
-
-def use_on_off_state():
-    """manage logic and state"""
-    state, set_state = idom.hooks.use_state(False)
-
-    def set_on():
-        set_state(True)
-
-    def set_off()
-        set_state(False)
-
-    return state, set_on, set_off
-
-def on_off_buttons(state, set_on, set_off):
-    """define element structure"""
+def DisplaySliderEvents():
+    event, set_event = idom.hooks.use_state(None)
     return idom.html.div(
-        idom.html.button({"onClick": lambda event: set_on(), "On"),
-        idom.html.button({"onClick": lambda event: set_off(), "Off"),
-        idom.html.p("The button is " + ("on" if state else "off")),
+        material_ui.Slider(
+            {
+                "color": "primary",
+                "step": 10,
+                "min": 0,
+                "max": 100,
+                "defaultValue": 50,
+                "valueLabelDisplay": "auto",
+                "onChange": lambda *event: set_event(event),
+            }
+        ),
+        idom.html.pre(json.dumps(event, indent=2)),
     )
+
+idom.run(DisplaySliderEvents)
 ```
 
-While the refactoring above is overkill in such a simple case, attempting something
-similar with the ealier imperative example wouldn't be as straighforward because
-callbacks responsible for defining business logic must hold a reference to the elements
-they intend to update. The effect is that the description of the layout in code is often
-muddled by semantic limitations of the business logic that make it difficult to maintain
-as the code develops and grows old. -->
+![material-ui-slider-demo](material-ui-slider.gif){: .center .shadow}
 
 ## Conclusion
 
@@ -292,7 +319,7 @@ use it wherever you need it, whether that's in a
 [Jupyter Notebook](https://github.com/idom-team/idom-jupyter)
 or an existing web application.
 
-To learn more check it out:
+To learn more check out:
 
 - [installation instructions](https://idom-docs.herokuapp.com/docs/installation.html)
 - [where to get started](https://idom-docs.herokuapp.com/docs/getting-started.html)
