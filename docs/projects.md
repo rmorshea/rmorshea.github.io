@@ -1,23 +1,19 @@
 # Projects
 
-
 ## Music
 
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/301979134&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 
-
 ## Software
-
 
 ### [<i class="fa fontawesome-brands-github"></i> iDOM](https://github.com/rmorshea/idom) - Python for the Web
 
 Gives Python developers the power to create interactive web applications without
 writing a single line of Javascript. iDOM was originally inspired by
-[Jupyter Widgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)
+[Jupyter Widgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html){target=\_blank}
 and
-[Nteract's VDOM](https://github.com/nteract/vdom),
+[Nteract's VDOM](https://github.com/nteract/vdom){target=\_blank},
 however it breaks from both by allowing live updates to substantially sized frontend views.
-
 
 ### [<i class="fa fontawesome-brands-github"></i> Spectate](https://github.com/rmorshea/spectate) - MVC for Python
 
