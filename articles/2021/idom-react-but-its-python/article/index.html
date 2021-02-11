@@ -435,9 +435,10 @@ has been clicked:</p>
 <p><img alt="click-counter-example" class="center shadow" src="../click-counter.gif" /></p>
 <h2 id="why-do-we-need-idom">Why Do We Need IDOM?</h2>
 <p>Over the <a href="https://www.npmtrends.com/react-vs-angular-vs-vue">past 5 years</a> front-end
-developers seem to have arrived at the conclusion that declarative programming is
-usually better than imperative. Put more simply, mutable state in programs can quickly
-lead to unsustainable complexity. This trend is largely evidenced by the
+developers seem to have concluded that programs written with a declarative style or
+framework tend to be easier understand and maintain than those done imperatively. Put
+more simply, mutable state in programs can quickly lead to unsustainable complexity.
+This trend is largely evidenced by the
 <a href="https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190">rise</a> of Javascript
 frameworks like <a href="https://vuejs.org/">Vue</a> and <a href="https://reactjs.org/">React</a> which
 describe the logic of computations without explicitly stating their control flow.</p>
@@ -510,8 +511,8 @@ socket:</p>
 functional characteristics. For those unfamiliar with hooks, user interfaces are
 composed of basic <a href="https://en.wikipedia.org/wiki/HTML_element">HTML elements</a> that are
 constructed and returned by special functions called "components". Then, through the
-magic of hooks, those components can be made to have state. Consider the component below
-which displays a basic representation of an
+magic of hooks, those component functions can be made to have state. Consider the
+component below which displays a basic representation of an
 <a href="https://en.wikipedia.org/wiki/AND_gate">AND-gate</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">idom</span>
 
@@ -548,11 +549,11 @@ elements with callbacks that respond to client-side events. Machinery behind the
 subsequently realizes that declaration and displays two checkbox buttons with the text
 <code>False AND False = False</code>. Later, when a user clicks the now visible checkbox buttons,
 client-side events are triggered, the associated callbacks respond by inverting the old
-state from <code>False</code> to <code>True</code>, and a re-render of the component is scheduled. When
+<code>state</code> from <code>False</code> to <code>True</code>, and a re-render of the component is scheduled. When
 re-rendering, the function is again called, this time though, where <code>input_1</code> and
 <code>input_2</code> have been updated to reflect the new <code>state</code>, thus causing the displayed text
 to change.</p>
-<p>Consider the fact that nowhere in the example above does the code describe how to evolve
+<p>In the code above, consider the fact that it never explicitely describes how to evolve
 the frontend view when events occur. Instead, it declares that, given a particular
 state, this is how the view should look. It's then IDOM's responsibility to figure out
 how to bring that declaration into being. This behavior of defining outcomes without
@@ -561,14 +562,14 @@ stating the means by which to achieve them is what makes components in IDOM and 
 defining the same interface might look similar to the following:</p>
 <div class="highlight"><pre><span></span><code><span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">and_gate</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">make_and_gate</span><span class="p">():</span>
     <span class="n">state</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;input_1&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;input_2&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
     <span class="n">output_text</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">pre</span><span class="p">()</span>
-    <span class="n">update_and_gate_output_text</span><span class="p">(</span><span class="n">output_text</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+    <span class="n">update_output_text</span><span class="p">(</span><span class="n">output_text</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">toggle_input</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
       <span class="n">state</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;input_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">state</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;input_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
-      <span class="n">update_and_gate_output_text</span><span class="p">(</span><span class="n">output_text</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+      <span class="n">update_output_text</span><span class="p">(</span><span class="n">output_text</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">div</span><span class="p">(</span>
         <span class="n">html</span><span class="o">.</span><span class="n">input</span><span class="p">(</span>
@@ -580,7 +581,7 @@ defining the same interface might look similar to the following:</p>
         <span class="n">output_text</span>
     <span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">update_and_gate_output_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">update_output_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
     <span class="n">text</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
         <span class="n">children</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{input_1}</span><span class="s2"> AND </span><span class="si">{input_2}</span><span class="s2"> = </span><span class="si">{output}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">input_1</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s2">&quot;input_1&quot;</span><span class="p">],</span>
@@ -589,7 +590,7 @@ defining the same interface might look similar to the following:</p>
         <span class="p">)</span>
     <span class="p">)</span>
 
-<span class="n">layout</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">and_gate</span><span class="p">())</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">make_and_gate</span><span class="p">())</span>
 <span class="n">layout</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 
@@ -597,17 +598,17 @@ defining the same interface might look similar to the following:</p>
 <ol>
 <li>
 <p><strong>Refactoring is difficult</strong> - Functions are much more specialized to their
-   particular usages in <code>and_gate</code>. By comparison, <code>use_toggle</code> from the declarative
-   implementation could be applicable to any scenario where boolean indicators should be
-   toggled on and off.</p>
+   particular usages in <code>make_and_gate</code> and thus cannot be easily generalized. By
+   comparison, <code>use_toggle</code> from the declarative implementation could be applicable to
+   any scenario where boolean indicators are toggled on and off.</p>
 </li>
 <li>
-<p><strong>No clear static relations</strong> - There is no one section of code in which one can
+<p><strong>No clear static relations</strong> - There is no one section of code through which one can
    discern the basic structure and behaviors of the view. This issue is exemplified by
-   the fact that we must call <code>update_and_gate_output_text</code> from two different
-   locations. Once in the body of <code>and_gate</code> and again in the body of the callback
-   <code>toggle_input</code>. This means that, to understand what the <code>output_text</code> might contain,
-   we must also understand all the business logic that surrounds it.</p>
+   the fact that we must call <code>update_output_text</code> from two different locations. Once in
+   the body of <code>make_and_gate</code> and again in the body of the callback <code>toggle_input</code>.
+   This means that, to understand what the <code>output_text</code> might contain, we must also
+   understand all the business logic that surrounds it.</p>
 </li>
 <li>
 <p><strong>Referential links cause complexity</strong> - To evolve the view, various callbacks must
@@ -636,9 +637,9 @@ Javascript client:</p>
 developers with just a little bit of HTML and CSS knowledge can easily create elabortate
 interfaces because they have complete control over the view. Of course many users
 probably don't care about the details and just want high level components, but for those
-who do it's easy to distribute their creations for others to use.</p>
+who do, it's easy to distribute their creations for others to use in Python packages.</p>
 <h2 id="custom-javascript-components">Custom Javascript Components</h2>
-<p>Now, if you're thinking about how VDOM is being used critically, you may have thought...</p>
+<p>If you're thinking critically about IDOM's use of a virtual DOM, you may have thought...</p>
 <blockquote>
 <p>Isn't wiring a virtual representation of the view to the client, even if its diffed,
 expensive?</p>
@@ -687,8 +688,9 @@ use it wherever you need it, whether that's in a
 or an existing web application.</p>
 <p>To learn more check out:</p>
 <ul>
+<li><a href="https://github.com/idom-team/idom">the source code</a></li>
 <li><a href="https://idom-docs.herokuapp.com/docs/installation.html">installation instructions</a></li>
-<li><a href="https://idom-docs.herokuapp.com/docs/getting-started.html">where to get started</a></li>
+<li><a href="https://idom-docs.herokuapp.com/docs/getting-started.html">how to make your first component</a></li>
 <li><a href="https://idom-docs.herokuapp.com/docs/examples.html">interactive examples</a></li>
 <li><a href="https://idom-docs.herokuapp.com/docs/index.html">and much more</a>!</li>
 </ul>
