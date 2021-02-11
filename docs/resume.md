@@ -5,10 +5,10 @@
 [:fontawesome-brands-linkedin: LinkedIn](https://linkedin.com/in/rmorshea) |
 [:fontawesome-brands-twitter: Twitter](https://twitter.com/)
 
-A software engineer with experience across the stack as a learner and a leader in open
-source and enterprise. Having worked on projects from their inception to their long
-decline he believes the written and verbal communication of one's work forms the
-foundation of its sustainability.
+Ryan is software engineer with 5 years experience as a Python developer who is
+passionate about data visualization and analysis. He has worked across the stack as a
+learner and a leader in open source and enterprise. His most valued skills are those
+that allow him to communicate big ideas and advocate for change.
 
 ## Work Experience
 

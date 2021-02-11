@@ -262,7 +262,7 @@ By contrast, IDOM uses something called a Virtual Document Object Model
 ([VDOM](https://idom-docs.herokuapp.com/docs/specifications.html#vdom-mimetype)) to
 construct a representation of the view. The VDOM is constructed on the Python side by
 components then, as it evolves, IDOM's layout computes VDOM-diffs and wires them to its
-Javascript client:
+Javascript client where it is ultimately displayed:
 
 ![idom-flow-diagram](idom-flow-diagram.svg){: .center}
 
