@@ -104,7 +104,7 @@ However they each have drawbacks that can make them difficult to use.
    complex UI layouts may not have been a primary engineering goal.
 
 A future article will address specific comparisons to each of the projects mentioned
-above, but for now, we'll just focus on IDOM and its solutions to the problems above.
+above, but for now, we'll just focus on IDOM and its solutions to these problems.
 
 ## Ecosystem Independence
 
