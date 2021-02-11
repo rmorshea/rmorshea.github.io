@@ -388,13 +388,14 @@
                 
                 
                 <h1 id="idom-its-react-but-in-python">IDOM - It's React, but in Python</h1>
-<p><a href="https://github.com/idom-team/idom">IDOM</a> is a new declarative Python package for
-building highly interactive user interfaces.</p>
+<p><a href="https://github.com/idom-team/idom" target="_blank">IDOM</a> is a new declarative Python
+package for building highly interactive user interfaces.</p>
 <p><img alt="idom logo" src="https://github.com/idom-team/idom/raw/929d07ff4a643320a6148336613621242284f8d2/docs/source/branding/idom-logo.png" /></p>
-<p>IDOM takes inspiration from <a href="https://reactjs.org/">React</a>, and wherever possible,
-attempts to achieve parity with the features it copies more directly. Nowhere is this
-more evident than the version of React's often lauded
-<a href="https://reactjs.org/docs/hooks-intro.html">"Hooks"</a> that IDOM implements in Python.</p>
+<p>IDOM takes inspiration from <a href="https://reactjs.org/" target="_blank">React</a>, and wherever
+possible, attempts to achieve parity with the features it copies more directly. Nowhere
+is this more evident than the version of React's often lauded
+<a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">"Hooks"</a> that IDOM
+implements in Python.</p>
 <p>At a glance, the similarities between IDOM and React are rather striking. Below is a
 React component which defines a simple <code>Counter</code> displaying the number of times a button
 has been clicked:</p>
@@ -434,14 +435,17 @@ has been clicked:</p>
 <p>Which, when displayed in your browser, should look something like this:</p>
 <p><img alt="click-counter-example" class="center shadow" src="../click-counter.gif" /></p>
 <h2 id="why-do-we-need-idom">Why Do We Need IDOM?</h2>
-<p>Over the <a href="https://www.npmtrends.com/react-vs-angular-vs-vue">past 5 years</a> front-end
-developers seem to have concluded that programs written with a declarative style or
+<p>Over the <a href="https://www.npmtrends.com/react-vs-angular-vs-vue" target="_blank">past 5
+years</a> front-end
+developers seem to have concluded that programs written with a
+<a href="https://www.youtube.com/watch?v=yGh0bjzj4IQ" target="_blank">declarative</a> style or
 framework tend to be easier understand and maintain than those done imperatively. Put
 more simply, mutable state in programs can quickly lead to unsustainable complexity.
 This trend is largely evidenced by the
-<a href="https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190">rise</a> of Javascript
-frameworks like <a href="https://vuejs.org/">Vue</a> and <a href="https://reactjs.org/">React</a> which
-describe the logic of computations without explicitly stating their control flow.</p>
+<a href="https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190" target="_blank">rise</a>
+of Javascript frameworks like <a href="https://vuejs.org/" target="_blank">Vue</a> and
+<a href="https://reactjs.org/" target="_blank">React</a> which describe the logic of computations
+without explicitly stating their control flow.</p>
 <p><img alt="npm download trends" src="../npm-download-trends.png" /></p>
 <p>So what does this have to do with Python and IDOM? Well, because browsers are the de
 facto "operating system of the internet", even back-end languages like Python have had
@@ -451,14 +455,14 @@ suited to applications built using HTML templates, modern browser users expect a
 degree of interactivity than this alone can achieve.</p>
 <p>A variety of Python packages have since been created to help solve this problem:</p>
 <ul>
-<li><a href="https://github.com/jupyter-widgets/ipywidgets">IPyWidgets</a> - Adds interactive widgets
-  to <a href="https://jupyter.org/">Jupyter Notebooks</a></li>
-<li><a href="https://plotly.com/dash/">Dash</a> - Allows data scientists to produces enterprise-ready
-  analytic apps</li>
-<li><a href="https://www.streamlit.io/">Streamlit</a> - Turns simple Python scripts into interactive
-  dashboards</li>
-<li><a href="https://docs.bokeh.org/">Bokeh</a> - An interactive visualization library for modern web
-  browsers</li>
+<li><a href="https://github.com/jupyter-widgets/ipywidgets" target="_blank">IPyWidgets</a> - Adds
+  interactive widgets to <a href="https://jupyter.org/" target="_blank">Jupyter Notebooks</a></li>
+<li><a href="https://plotly.com/dash/" target="_blank">Dash</a> - Allows data scientists to produces
+  enterprise-ready analytic apps</li>
+<li><a href="https://www.streamlit.io/" target="_blank">Streamlit</a> - Turns simple Python scripts
+  into interactive dashboards</li>
+<li><a href="https://docs.bokeh.org/" target="_blank">Bokeh</a> - An interactive visualization
+  library for modern web browsers</li>
 </ul>
 <p>However they each have drawbacks that can make them difficult to use.</p>
 <ol>
@@ -485,35 +489,36 @@ above, but for now, we'll just focus on IDOM and its solutions to the problems a
 At the time of writing, both Jupyter and Dash are supported, while Streamlit and Bokeh
 are in the works:</p>
 <ul>
-<li><a href="https://github.com/idom-team/idom-jupyter">idom-jupyter</a> (try it now with
-  <a href="https://mybinder.org/v2/gh/idom-team/idom-jupyter/main?filepath=notebooks%2Fintroduction.ipynb">Binder</a>)</li>
-<li><a href="https://github.com/idom-team/idom-dash">idom-dash</a></li>
+<li><a href="https://github.com/idom-team/idom-jupyter" target="_blank">idom-jupyter</a> (try it now
+  with
+  <a href="https://mybinder.org/v2/gh/idom-team/idom-jupyter/main?filepath=notebooks%2Fintroduction.ipynb" target="_blank">Binder</a>)</li>
+<li><a href="https://github.com/idom-team/idom-dash" target="_blank">idom-dash</a></li>
 </ul>
 <p>By providing well defined interfaces and straighforward protocols, IDOM makes it easy to
 swap out any part of the stack with an alternate implementation if you want to. For
 example, if you need a different web server for your application, IDOM already has 3
 options to choose from or, use as blueprints to create your own:</p>
 <ul>
-<li><a href="https://github.com/sanic-org/sanic">Sanic</a></li>
-<li><a href="https://github.com/pallets/flask">Flask</a></li>
-<li><a href="https://github.com/tornadoweb/tornado">Tornado</a></li>
+<li><a href="https://github.com/sanic-org/sanic" target="_blank">Sanic</a></li>
+<li><a href="https://github.com/pallets/flask" target="_blank">Flask</a></li>
+<li><a href="https://github.com/tornadoweb/tornado" target="_blank">Tornado</a></li>
 </ul>
 <p>You can even target your usage of IDOM in your production-grade applications with IDOM's
-Javascript <a href="https://github.com/idom-team/idom-client-react">React client library</a>. Just
-install it in your front-end app and connect a back-end websocket that's serving up IDOM
-models. IDOM's own <a href="https://idom-docs.herokuapp.com/docs/index.html">documentation</a> acts
-as a prime example for this targeted usage - most of the page is static HTML, but
-embedded in it are interactive examples that feature live views being served from a web
-socket:</p>
+Javascript <a href="https://github.com/idom-team/idom-client-react" target="_blank">React client library</a>. Just install
+it in your front-end app and connect a back-end websocket that's serving up IDOM models.
+IDOM's own
+<a href="https://idom-docs.herokuapp.com/docs/index.html" target="_blank">documentation</a> acts as
+a prime example for this targeted usage - most of the page is static HTML, but embedded
+in it are interactive examples that feature live views being served from a web socket:</p>
 <p><img alt="live-examples-in-docs" class="shadow" src="../live-examples-in-docs.gif" /></p>
 <h2 id="declarative-components">Declarative Components</h2>
 <p>IDOM, by adopting the hook design pattern from React, inherits many of its aesthetic and
 functional characteristics. For those unfamiliar with hooks, user interfaces are
-composed of basic <a href="https://en.wikipedia.org/wiki/HTML_element">HTML elements</a> that are
+composed of basic <a href="https://en.wikipedia.org/wiki/HTML_element" target="_blank">HTML elements</a> that are
 constructed and returned by special functions called "components". Then, through the
 magic of hooks, those component functions can be made to have state. Consider the
 component below which displays a basic representation of an
-<a href="https://en.wikipedia.org/wiki/AND_gate">AND-gate</a>:</p>
+<a href="https://en.wikipedia.org/wiki/AND_gate" target="_blank">AND-gate</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">idom</span>
 
 <span class="nd">@idom</span><span class="o">.</span><span class="n">component</span>
@@ -622,14 +627,14 @@ defining the same interface might look similar to the following:</p>
 <h2 id="virtual-document-object-model">Virtual Document Object Model</h2>
 <p>To communicate between their back-end Python servers and Javascript clients, IDOM's
 peers take an approach that aligns fairly closely with the
-<a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Controller</a>
+<a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank">Model-View-Controller</a>
 design pattern - the controller lives server-side (though not always), the model is
 what's synchronized between the server and client, and the view is run client-side in
 Javascript. To draw it out might look something like this:</p>
 <p><img alt="mvc-flow-diagram" class="center" src="../mvc-flow-diagram.svg" /></p>
 <p>By contrast, IDOM uses something called a Virtual Document Object Model
-(<a href="https://idom-docs.herokuapp.com/docs/specifications.html#vdom-mimetype">VDOM</a>) to
-construct a representation of the view. The VDOM is constructed on the Python side by
+(<a href="https://idom-docs.herokuapp.com/docs/specifications.html#vdom-mimetype" target="_blank">VDOM</a>)
+to construct a representation of the view. The VDOM is constructed on the Python side by
 components then, as it evolves, IDOM's layout computes VDOM-diffs and wires them to its
 Javascript client where it is ultimately displayed:</p>
 <p><img alt="idom-flow-diagram" class="center" src="../idom-flow-diagram.svg" /></p>
@@ -646,8 +651,8 @@ expensive?</p>
 </blockquote>
 <p>And yes, while the performance of IDOM is sufficient for most use cases, there are
 inevitably scenarios where this could be an issue. Thankfully though, just like its
-peers, IDOM makes it possible to seemlesly integrate
-<a href="https://idom-docs.herokuapp.com/docs/javascript-components.html">Javascript components</a>.
+peers, IDOM makes it possible to seemlesly integrate <a href="https://idom-docs.herokuapp.com/docs/javascript-components.html" target="_blank">Javascript
+components</a>.
 They can be custom built for your use case, or you can just leverage the existing
 Javascript ecosystem without any extra work:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
@@ -681,18 +686,19 @@ Javascript ecosystem without any extra work:</p>
 <p>Building highly interactive web applications as a Python developer has historically been
 a great challenge. However IDOM changes that. Knowing just basic HTML, CSS, and Python,
 you can make everything from
-<a href="https://idom-docs.herokuapp.com/docs/examples.html#slideshow">slideshows</a> to
-<a href="https://idom-docs.herokuapp.com/docs/examples.html#simple-dashboard">dashboards</a> and
-use it wherever you need it, whether that's in a
-<a href="https://github.com/idom-team/idom-jupyter">Jupyter Notebook</a>
-or an existing web application.</p>
+<a href="https://idom-docs.herokuapp.com/docs/examples.html#slideshow" target="_blank">slideshows</a>
+to
+<a href="https://idom-docs.herokuapp.com/docs/examples.html#simple-dashboard" target="_blank">dashboards</a>
+and use it wherever you need it, whether that's in a <a href="https://github.com/idom-team/idom-jupyter" target="_blank">Jupyter
+Notebook</a> or an existing web
+application.</p>
 <p>To learn more check out:</p>
 <ul>
-<li><a href="https://github.com/idom-team/idom">the source code</a></li>
-<li><a href="https://idom-docs.herokuapp.com/docs/installation.html">installation instructions</a></li>
-<li><a href="https://idom-docs.herokuapp.com/docs/getting-started.html">how to make your first component</a></li>
-<li><a href="https://idom-docs.herokuapp.com/docs/examples.html">interactive examples</a></li>
-<li><a href="https://idom-docs.herokuapp.com/docs/index.html">and much more</a>!</li>
+<li><a href="https://github.com/idom-team/idom" target="_blank">the source code</a></li>
+<li><a href="https://idom-docs.herokuapp.com/docs/installation.html" target="_blank">installation instructions</a></li>
+<li><a href="https://idom-docs.herokuapp.com/docs/getting-started.html" target="_blank">understanding components</a></li>
+<li><a href="https://idom-docs.herokuapp.com/docs/examples.html" target="_blank">interactive examples</a></li>
+<li><a href="https://idom-docs.herokuapp.com/docs/index.html" target="_blank">and much more</a>!</li>
 </ul>
                 
               
