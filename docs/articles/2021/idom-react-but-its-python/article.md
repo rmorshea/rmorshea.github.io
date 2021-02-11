@@ -128,8 +128,8 @@ options to choose from or, use as blueprints to create your own:
 
 You can even target your usage of IDOM in your production-grade applications with IDOM's
 Javascript [React client library](https://github.com/idom-team/idom-client-react){target=\_blank}. Just install
-it in your front-end app and connect a back-end websocket that's serving up IDOM models.
-IDOM's own
+it in your front-end app and connect to a back-end websocket that's serving up IDOM
+models. IDOM's own
 [documentation](https://idom-docs.herokuapp.com/docs/index.html){target=\_blank} acts as
 a prime example for this targeted usage - most of the page is static HTML, but embedded
 in it are interactive examples that feature live views being served from a web socket:
