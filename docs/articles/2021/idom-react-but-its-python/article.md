@@ -93,7 +93,7 @@ However they each have drawbacks that can make them difficult to use.
 
 1. **Imperative paradigm** - IPyWidgets and Bokeh have not embraced the same declarative
    design principles pioneered by front-end developers. Streamlit and Dash on the
-   otherhand, are decarative, but fall short of the features provided by React or Vue.
+   otherhand, are declarative, but fall short of the features provided by React or Vue.
 
 1. **Limited layouts** - At their initial inception, the developers of these libraries
    were driven by the visualization needs of data scientists so the ability to create
@@ -280,7 +280,7 @@ If you're thinking critically about IDOM's use of a virtual DOM, you may have th
 > expensive?
 
 And yes, while the performance of IDOM is sufficient for most use cases, there are
-inevitably scenarios where this could be an issue. Thankfully though, just like it's
+inevitably scenarios where this could be an issue. Thankfully though, just like its
 peers, IDOM makes it possible to seemlesly integrate
 [Javascript components](https://idom-docs.herokuapp.com/docs/javascript-components.html).
 They can be custom built for your use case, or you can just leverage the existing
