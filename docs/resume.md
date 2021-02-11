@@ -59,9 +59,9 @@ editor used in the production pipeline for Apple Maps.
 
 ## Testimonials
 
-> His knowledge of the inner workings of Python are easily some of the best I’ve seen...
+> "His knowledge of the inner workings of Python are easily some of the best I’ve seen...
 > he is also one of the most genuine and cooperative people I have had the pleasure of
-> working with.
+> working with."
 
 <a href="https://www.linkedin.com/in/adyates/">
   :fontawesome-brands-linkedin:
