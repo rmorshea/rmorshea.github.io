@@ -136,8 +136,8 @@ IDOM, by adopting the hook design pattern from React, inherits many of its aesth
 functional characteristics. For those unfamiliar with hooks, user interfaces are
 composed of basic [HTML elements](https://en.wikipedia.org/wiki/HTML_element) that are
 constructed and returned by special functions called "components". Then, through the
-magic of hooks, those components can be made to have state. Consider the component below
-which displays a basic representation of an
+magic of hooks, those component functions can be made to have state. Consider the
+component below which displays a basic representation of an
 [AND-gate](https://en.wikipedia.org/wiki/AND_gate):
 
 ```python
@@ -177,12 +177,12 @@ elements with callbacks that respond to client-side events. Machinery behind the
 subsequently realizes that declaration and displays two checkbox buttons with the text
 `False AND False = False`. Later, when a user clicks the now visible checkbox buttons,
 client-side events are triggered, the associated callbacks respond by inverting the old
-state from `False` to `True`, and a re-render of the component is scheduled. When
+`state` from `False` to `True`, and a re-render of the component is scheduled. When
 re-rendering, the function is again called, this time though, where `input_1` and
 `input_2` have been updated to reflect the new `state`, thus causing the displayed text
 to change.
 
-Consider the fact that nowhere in the example above does the code describe how to evolve
+In the code above, consider the fact that it never explicitely describes how to evolve
 the frontend view when events occur. Instead, it declares that, given a particular
 state, this is how the view should look. It's then IDOM's responsibility to figure out
 how to bring that declaration into being. This behavior of defining outcomes without
@@ -228,9 +228,9 @@ layout.run()
 In this imperative incarnation there are several disadvantages:
 
 1. **Refactoring is difficult** - Functions are much more specialized to their
-   particular usages in `and_gate`. By comparison, `use_toggle` from the declarative
-   implementation could be applicable to any scenario where boolean indicators should be
-   toggled on and off.
+   particular usages in `and_gate` and thus cannot be easily generalized. By comparison,
+   `use_toggle` from the declarative implementation could be applicable to any scenario
+   where boolean indicators are toggled on and off.
 
 2. **No clear static relations** - There is no one section of code in which one can
    discern the basic structure and behaviors of the view. This issue is exemplified by
@@ -269,11 +269,11 @@ This process, in addition to drastically reducing complexity, means that Python
 developers with just a little bit of HTML and CSS knowledge can easily create elabortate
 interfaces because they have complete control over the view. Of course many users
 probably don't care about the details and just want high level components, but for those
-who do it's easy to distribute their creations for others to use.
+who do, it's easy to distribute their creations for others to use in Python packages.
 
 ## Custom Javascript Components
 
-Now, if you're thinking about how VDOM is being used critically, you may have thought...
+If you're thinking critically about IDOM's use of a virtual DOM, you may have thought...
 
 > Isn't wiring a virtual representation of the view to the client, even if its diffed,
 > expensive?
