@@ -1,7 +1,7 @@
 # IDOM - It's React, but in Python
 
 [IDOM](https://github.com/idom-team/idom) is a new declarative Python package for
-building highly interactive and composable user interfaces.
+building highly interactive user interfaces.
 
 ![idom logo](https://github.com/idom-team/idom/raw/929d07ff4a643320a6148336613621242284f8d2/docs/source/branding/idom-logo.png)
 
@@ -11,22 +11,24 @@ more evident than the version of React's often lauded
 ["Hooks"](https://reactjs.org/docs/hooks-intro.html) that IDOM implements in Python.
 
 At a glance, the similarities between IDOM and React are rather striking. Below is a
-React component which defines a simple `Slideshow` displaying an image that updates when
-a user clicks on it:
+React component which defines a simple `Counter` displaying the number of times a button
+has been clicked:
 
 ```jsx
-import React, { useState } from react;
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
 
-function Slideshow() {
-  const [index, setIndex] = useState(0);
+function Counter() {
+  const [count, setCount] = useState(0);
   return (
-    <img
-      src={ `https://picsum.photos/400?image=${index}` }
-      onClick={ () => setIndex(index + 1) }
-      style={ {cursor: "pointer"} }
-    />
-  )
+    <div>
+      <button onClick={() => setCount(count + 1)}>Click me!</button>
+      <p>{`Click count: ${count}`}</p>
+    </div>
+  );
 }
+
+ReactDOM.render(<Counter />, document.getElementById("root"));
 ```
 
 And this is the same component implemented in Python using IDOM:
@@ -35,18 +37,22 @@ And this is the same component implemented in Python using IDOM:
 import idom
 
 @idom.component
-def Slideshow():
-    index, set_index = idom.hooks.use_state(0)
-    return idom.html.img(
-        {
-            "src": f"https://picsum.photos/400?image={index}",
-            "onClick": lambda event: set_index(index + 1),
-            "style": {"cursor": "pointer"},
-        }
+def Counter():
+    count, set_count = idom.hooks.use_state(0)
+    return idom.html.div(
+        idom.html.button(
+            {"onClick": lambda event: set_count(count + 1)},
+            "Click me!"
+        ),
+        idom.html.p(f"Click count: {count}")
     )
 
-idom.run(Slideshow)
+idom.run(Counter)
 ```
+
+Which, when displayed in your browser, should look something like this:
+
+![click-counter-example](click-counter.gif){: .center .shadow}
 
 ## Why Do We Need IDOM?
 
@@ -97,18 +103,18 @@ above, but for now, we'll just focus on IDOM and its solutions to the problems a
 
 ## Ecosystem Independence
 
-IDOM has a flexible set of core abstractions that allow it to easily interface with its
-peers. At the time of writing, both Jupyter and Dash are supported, while Streamlit and
-Bokeh are in the works:
+IDOM has a flexible set of core abstractions that allow it to interface with its peers.
+At the time of writing, both Jupyter and Dash are supported, while Streamlit and Bokeh
+are in the works:
 
 - [idom-jupyter](https://github.com/idom-team/idom-jupyter) (try it now with
   [Binder](https://mybinder.org/v2/gh/idom-team/idom-jupyter/main?filepath=notebooks%2Fintroduction.ipynb))
 - [idom-dash](https://github.com/idom-team/idom-dash)
 
 By providing well defined interfaces and straighforward protocols, IDOM makes it easy to
-swap out any part of the stack with an alternate implementation if you need to. For
-example, if you need to use a different web server for your application, IDOM already
-has 3 options to choose from or, use as blueprints to create your own:
+swap out any part of the stack with an alternate implementation if you want to. For
+example, if you need a different web server for your application, IDOM already has 3
+options to choose from or, use as blueprints to create your own:
 
 - [Sanic](https://github.com/sanic-org/sanic)
 - [Flask](https://github.com/pallets/flask)
