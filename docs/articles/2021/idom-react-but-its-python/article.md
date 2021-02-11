@@ -288,8 +288,10 @@ And yes, while the performance of IDOM is sufficient for most use cases, there a
 inevitably scenarios where this could be an issue. Thankfully though, just like its
 peers, IDOM makes it possible to seemlesly integrate [Javascript
 components](https://idom-docs.herokuapp.com/docs/javascript-components.html){target=\_blank}.
-They can be custom built for your use case, or you can just leverage the existing
-Javascript ecosystem without any extra work:
+They can be
+[custom built](https://github.com/idom-team/idom-react-component-cookiecutter){target=\_blank}
+for your use case, or you can just leverage the existing Javascript ecosystem without
+any extra work:
 
 ```python
 import json
