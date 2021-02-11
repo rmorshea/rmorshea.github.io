@@ -238,7 +238,7 @@ In this imperative incarnation there are several disadvantages:
    comparison, `use_toggle` from the declarative implementation could be applicable to
    any scenario where boolean indicators are toggled on and off.
 
-2. **No clear static relations** - There is no one section of code through which one can
+2. **No clear static relations** - There is no one section of code through which to
    discern the basic structure and behaviors of the view. This issue is exemplified by
    the fact that we must call `update_output_text` from two different locations. Once in
    the body of `make_and_gate` and again in the body of the callback `toggle_input`.
