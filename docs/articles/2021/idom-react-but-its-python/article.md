@@ -57,9 +57,10 @@ Which, when displayed in your browser, should look something like this:
 ## Why Do We Need IDOM?
 
 Over the [past 5 years](https://www.npmtrends.com/react-vs-angular-vs-vue) front-end
-developers seem to have arrived at the conclusion that declarative programming is
-usually better than imperative. Put more simply, mutable state in programs can quickly
-lead to unsustainable complexity. This trend is largely evidenced by the
+developers seem to have concluded that programs written with a declarative style or
+framework tend to be easier understand and maintain than those done imperatively. Put
+more simply, mutable state in programs can quickly lead to unsustainable complexity.
+This trend is largely evidenced by the
 [rise](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190) of Javascript
 frameworks like [Vue](https://vuejs.org/) and [React](https://reactjs.org/) which
 describe the logic of computations without explicitly stating their control flow.
@@ -193,14 +194,14 @@ defining the same interface might look similar to the following:
 ```python
 layout = Layout()
 
-def and_gate():
+def make_and_gate():
     state = {"input_1": False, "input_2": False}
     output_text = html.pre()
-    update_and_gate_output_text(output_text, state)
+    update_output_text(output_text, state)
 
     def toggle_input(index):
       state[f"input_{index}"] = not state[f"input_{index}"]
-      update_and_gate_output_text(output_text, state)
+      update_output_text(output_text, state)
 
     return html.div(
         html.input(
@@ -212,7 +213,7 @@ def and_gate():
         output_text
     )
 
-def update_and_gate_output_text(text, state):
+def update_output_text(text, state):
     text.update(
         children="{input_1} AND {input_2} = {output}".format(
             input_1=state["input_1"],
@@ -221,23 +222,23 @@ def update_and_gate_output_text(text, state):
         )
     )
 
-layout.add_element(and_gate())
+layout.add_element(make_and_gate())
 layout.run()
 ```
 
 In this imperative incarnation there are several disadvantages:
 
 1. **Refactoring is difficult** - Functions are much more specialized to their
-   particular usages in `and_gate` and thus cannot be easily generalized. By comparison,
-   `use_toggle` from the declarative implementation could be applicable to any scenario
-   where boolean indicators are toggled on and off.
+   particular usages in `make_and_gate` and thus cannot be easily generalized. By
+   comparison, `use_toggle` from the declarative implementation could be applicable to
+   any scenario where boolean indicators are toggled on and off.
 
-2. **No clear static relations** - There is no one section of code in which one can
+2. **No clear static relations** - There is no one section of code through which one can
    discern the basic structure and behaviors of the view. This issue is exemplified by
-   the fact that we must call `update_and_gate_output_text` from two different
-   locations. Once in the body of `and_gate` and again in the body of the callback
-   `toggle_input`. This means that, to understand what the `output_text` might contain,
-   we must also understand all the business logic that surrounds it.
+   the fact that we must call `update_output_text` from two different locations. Once in
+   the body of `make_and_gate` and again in the body of the callback `toggle_input`.
+   This means that, to understand what the `output_text` might contain, we must also
+   understand all the business logic that surrounds it.
 
 3. **Referential links cause complexity** - To evolve the view, various callbacks must
    hold references to all the elements that they will update. At the outset this makes
@@ -327,7 +328,8 @@ or an existing web application.
 
 To learn more check out:
 
+- [the source code](https://github.com/idom-team/idom)
 - [installation instructions](https://idom-docs.herokuapp.com/docs/installation.html)
-- [where to get started](https://idom-docs.herokuapp.com/docs/getting-started.html)
+- [how to make your first component](https://idom-docs.herokuapp.com/docs/getting-started.html)
 - [interactive examples](https://idom-docs.herokuapp.com/docs/examples.html)
 - [and much more](https://idom-docs.herokuapp.com/docs/index.html)!
