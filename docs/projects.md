@@ -6,7 +6,7 @@ I've begun writing articles about my coding projects:
 
 - [IDOM - It's React, but in Python](/articles/2021/idom-its-react-but-in-python)
 
-Subscribe to the RSS feed below, to be notified when I post something new:
+Subscribe to the RSS feed below to be notified when I post something new:
 
 :fontawesome-solid-rss: - [feed_rss_created.xml](/feed_rss_created.xml){target=\_blank}
 
