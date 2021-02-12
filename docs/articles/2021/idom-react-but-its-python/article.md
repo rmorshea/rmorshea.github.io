@@ -1,4 +1,9 @@
-# IDOM - It's React, but in Python
+---
+title: IDOM - It's React, but in Python
+description: IDOM is a new declarative Python package for building highly interactive user interfaces.
+---
+
+# [:fontawesome-solid-rss:](/feed_rss_created.xml){target=\_blank} IDOM - It's React, but in Python
 
 [IDOM](https://github.com/idom-team/idom){target=\_blank} is a new declarative Python
 package for building highly interactive user interfaces.
@@ -61,7 +66,7 @@ Over the [past 5
 years](https://www.npmtrends.com/react-vs-angular-vs-vue){target=\_blank} front-end
 developers seem to have concluded that programs written with a
 [declarative](https://www.youtube.com/watch?v=yGh0bjzj4IQ){target=\_blank} style or
-framework tend to be easier understand and maintain than those done imperatively. Put
+framework tend to be easier to understand and maintain than those done imperatively. Put
 more simply, mutable state in programs can quickly lead to unsustainable complexity.
 This trend is largely evidenced by the
 [rise](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190){target=\_blank}
@@ -322,7 +327,7 @@ idom.run(DisplaySliderEvents)
 
 ![material-ui-slider-demo](material-ui-slider.gif){.center .shadow}
 
-## Conclusion
+## The Take Away
 
 Building highly interactive web applications as a Python developer has historically been
 a great challenge. However IDOM changes that. Knowing just basic HTML, CSS, and Python,

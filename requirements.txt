@@ -4,3 +4,4 @@ mkdocs-pdf-export-plugin==0.5.8
 pygments==2.7.1
 pymdown-extensions==8.0.1
 jsx-lexer==0.0.8
+git+https://github.com/rmorshea/mkdocs-rss-plugin.git#egg=mkdocs-rss-plugin
