@@ -4,7 +4,7 @@
 [:fontawesome-brands-github: GitHub](https://github.com/rmorshea){target=\_blank} |
 [:fontawesome-brands-linkedin: LinkedIn](https://linkedin.com/in/rmorshea){target=\_blank} |
 [:fontawesome-brands-twitter: Twitter](https://twitter.com/){target=\_blank} |
-[:fontawesome-solid-rss: Blog](/feed_rss_created.xml){target=\_blank}
+[:fontawesome-solid-rss: RSS](/feed_rss_created.xml){target=\_blank}
 
 Ryan is software engineer with 5 years experience as a Python developer who is
 passionate about data visualization and analysis. He has worked across the stack as a

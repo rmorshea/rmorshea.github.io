@@ -4,7 +4,7 @@
 [:fontawesome-brands-github: GitHub](https://github.com/rmorshea){target=\_blank} |
 [:fontawesome-brands-linkedin: LinkedIn](https://linkedin.com/in/rmorshea){target=\_blank} |
 [:fontawesome-brands-twitter: Twitter](https://twitter.com/){target=\_blank} |
-[:fontawesome-solid-rss: Blog](/feed_rss_created.xml){target=\_blank}
+[:fontawesome-solid-rss: RSS](/feed_rss_created.xml){target=\_blank}
 
 If only there was more time to explain how little time I seem to have... I write
 [music](projects#music),
