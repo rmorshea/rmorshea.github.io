@@ -2,6 +2,7 @@ site_name: Ryan Morshead
 
 site_dir: site
 docs_dir: docs
+site_url: https://rmorshea.github.io/
 
 theme:
   icon:
