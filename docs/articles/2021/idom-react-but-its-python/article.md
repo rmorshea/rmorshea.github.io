@@ -1,6 +1,7 @@
 ---
 title: IDOM - It's React, but in Python
 description: IDOM is a new declarative Python package for building highly interactive user interfaces.
+disqus: rmorshea-github-io
 ---
 
 # [:fontawesome-solid-rss:](/feed_rss_created.xml){target=\_blank} IDOM - It's React, but in Python
