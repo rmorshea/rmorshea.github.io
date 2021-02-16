@@ -28,6 +28,7 @@ extra_css:
 plugins:
 - pdf-export
 - search
+- git-revision-date
 - rss:
     date_from_meta:
       as_creation: "date"
