@@ -10,7 +10,7 @@ disqus: rmorshea-github-io
 package for building highly interactive user interfaces.
 
 - [:fontawesome-brands-github: https://github.com/idom-team/idom](https://github.com/idom-team/idom)
-- [:fontawesome-solid-info-circle: https://idom-docs.herokuapp.com](https://idom-docs.herokuapp.com)
+- [:fontawesome-solid-book: https://idom-docs.herokuapp.com](https://idom-docs.herokuapp.com)
 - [:fontawesome-solid-question-circle: https://github.com/idom-team/idom/discussions](https://github.com/idom-team/idom/discussions)
 
 [![idom logo](https://github.com/idom-team/idom/raw/929d07ff4a643320a6148336613621242284f8d2/docs/source/branding/idom-logo.png)](https://github.com/idom-team/idom)
