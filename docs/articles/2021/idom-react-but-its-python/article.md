@@ -127,7 +127,7 @@ supported, while Streamlit is in the works:
   with
   [Binder](https://mybinder.org/v2/gh/idom-team/idom-jupyter/main?filepath=notebooks%2Fintroduction.ipynb){target=\_blank})
 - [idom-dash](https://github.com/idom-team/idom-dash){target=\_blank}
-- [IDOM in Panel](https://panel.holoviz.org/reference/panes/IDOM.html#panes-gallery-idom)
+- [IDOM in Panel](https://panel.holoviz.org/reference/panes/IDOM.html#panes-gallery-idom){target=\_blank}
 
 By providing well defined interfaces and straighforward protocols, IDOM makes it easy to
 swap out any part of the stack with an alternate implementation if you want to. For
