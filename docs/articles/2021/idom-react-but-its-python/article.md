@@ -119,13 +119,15 @@ above, but for now, we'll just focus on IDOM and its solutions to these problems
 ## Ecosystem Independence
 
 IDOM has a flexible set of core abstractions that allow it to interface with its peers.
-At the time of writing, both Jupyter and Dash are supported, while Streamlit and Bokeh
-are in the works:
+At the time of writing, both Jupyter, Dash, and Bokeh (via
+[Panel](https://panel.holoviz.org/Comparisons.html#comparing-panel-and-bokeh)) are
+supported, while Streamlit is in the works:
 
 - [idom-jupyter](https://github.com/idom-team/idom-jupyter){target=\_blank} (try it now
   with
   [Binder](https://mybinder.org/v2/gh/idom-team/idom-jupyter/main?filepath=notebooks%2Fintroduction.ipynb){target=\_blank})
 - [idom-dash](https://github.com/idom-team/idom-dash){target=\_blank}
+- [IDOM in Panel](https://panel.holoviz.org/reference/panes/IDOM.html#panes-gallery-idom)
 
 By providing well defined interfaces and straighforward protocols, IDOM makes it easy to
 swap out any part of the stack with an alternate implementation if you want to. For
