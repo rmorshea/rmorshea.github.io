@@ -1,6 +1,6 @@
 # Ryan Morshead
 
-[:fontawesome-solid-link: Website](rmorshea.github.io){target=\_blank} |
+[:fontawesome-solid-link: Website](https://rmorshea.github.io){target=\_blank} |
 [:fontawesome-solid-envelope: Email](mailto:ryan.morshead@gmail.com){target=\_blank} |
 [:fontawesome-brands-github: GitHub](https://github.com/rmorshea){target=\_blank} |
 [:fontawesome-brands-linkedin: LinkedIn](https://linkedin.com/in/rmorshea){target=\_blank} |
