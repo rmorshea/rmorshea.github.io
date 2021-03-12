@@ -1,10 +1,10 @@
 # Ryan Morshead
 
-[:fontawesome-solid-link: Website](https://ryanmorshead.com){target=\_blank} |
+[:fontawesome-solid-link: Website](https://ryanmorshead.com) |
 [:fontawesome-solid-envelope: Email](mailto:ryan.morshead@gmail.com){target=\_blank} |
 [:fontawesome-brands-github: GitHub](https://github.com/rmorshea){target=\_blank} |
 [:fontawesome-brands-linkedin: LinkedIn](https://linkedin.com/in/rmorshea){target=\_blank} |
-[:fontawesome-brands-twitter: Twitter](https://twitter.com/){target=\_blank} |
+[:fontawesome-brands-twitter: Twitter](https://twitter.com/){target=\_blank}
 
 Ryan is software engineer with 5 years experience as a Python developer who is
 passionate about data visualization and analysis. He has worked across the stack as a
