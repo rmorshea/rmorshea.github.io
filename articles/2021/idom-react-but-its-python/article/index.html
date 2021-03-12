@@ -423,7 +423,6 @@ has been clicked:</p>
 
 <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(&lt;</span><span class="nt">Counter</span> <span class="p">/&gt;,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">));</span>
 </code></pre></div>
-
 <p>And this is the same component implemented in Python using IDOM:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">idom</span>
 
@@ -440,7 +439,6 @@ has been clicked:</p>
 
 <span class="n">idom</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Counter</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Which, when displayed in your browser, should look something like this:</p>
 <p><img alt="click-counter-example" class="center shadow" src="../click-counter.gif" /></p>
 <h2 id="why-do-we-need-idom">Why Do We Need IDOM?</h2>
@@ -556,7 +554,6 @@ component below which displays a basic representation of an
 
 <span class="n">idom</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">AndGate</span><span class="p">)</span>
 </code></pre></div>
-
 <p><img alt="and-gate-demo" class="center shadow" src="../and-gate.gif" /></p>
 <p>Here's a very high level summary of how it works... the first time a view of the
 component above is rendered, the <code>AndGate</code> function is called where its initial <code>state</code>
@@ -609,7 +606,6 @@ defining the same interface might look similar to the following:</p>
 <span class="n">layout</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">make_and_gate</span><span class="p">())</span>
 <span class="n">layout</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
-
 <p>In this imperative incarnation there are several disadvantages:</p>
 <ol>
 <li>
@@ -693,7 +689,6 @@ any extra work:</p>
 
 <span class="n">idom</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">DisplaySliderEvents</span><span class="p">)</span>
 </code></pre></div>
-
 <p><img alt="material-ui-slider-demo" class="center shadow" src="../material-ui-slider.gif" /></p>
 <h2 id="the-take-away">The Take Away</h2>
 <p>Building highly interactive web applications as a Python developer has historically been
