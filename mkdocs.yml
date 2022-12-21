@@ -12,7 +12,7 @@ theme:
     text: 'Exo'
     code: 'Fira Mono'
   palette:
-    primary: 'white'
+    primary: 'gray'
     accent: 'indigo'
 
 nav:
